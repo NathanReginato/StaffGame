@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=11 format=3 uid="uid://okj2yik4pj41"]
 
+[ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://bvugupfsattia" path="res://run-1.png" id="1_x8so8"]
 [ext_resource type="Texture2D" uid="uid://okpy33ifnnre" path="res://run-2.png" id="2_seb4g"]
 [ext_resource type="Texture2D" uid="uid://dl6ovfl8xykot" path="res://run-3.png" id="3_qt4hs"]
@@ -9,8 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ubctimedc4ag" path="res://run-7.png" id="7_nmejl"]
 [ext_resource type="Texture2D" uid="uid://bpku1j1par4d6" path="res://run-8.png" id="8_ohg0u"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7io4s"]
-resource_local_to_scene = true
+[sub_resource type="SpriteFrames" id="SpriteFrames_oo55t"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -44,10 +44,17 @@ animations = [{
 
 [node name="Game" type="Node2D"]
 
+[node name="Label" type="Label" parent="."]
+offset_left = 33.0
+offset_top = 27.0
+offset_right = 119.0
+offset_bottom = 50.0
+text = "Staff Game"
+
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+script = ExtResource("1_onsfm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(36, 33)
-sprite_frames = SubResource("SpriteFrames_7io4s")
+position = Vector2(51, 94)
+sprite_frames = SubResource("SpriteFrames_oo55t")
 animation = &"run"
-frame_progress = 0.427074
