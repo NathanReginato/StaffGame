@@ -30,3 +30,5 @@ func _process(_delta):
 		_animated_sprite.play("WalkSouth")
 	else:
 		_animated_sprite.stop()
+
+
