@@ -1,9 +1,9 @@
-[gd_scene load_steps=82 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=83 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_xmtik"]
-[ext_resource type="Texture2D" uid="uid://bdpomuw4ydnn4" path="res://Button Itch Pack/Select/Select1.png" id="3_6ds4y"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_q0siy"]
+[ext_resource type="Texture2D" uid="uid://bpkgech86isub" path="res://clipboard.png" id="4_12b2n"]
 [ext_resource type="Texture2D" uid="uid://bveaboh7ab1es" path="res://Button Itch Pack/Back/Back1.png" id="4_sm6ab"]
 [ext_resource type="Texture2D" uid="uid://4plsjkxenc5j" path="res://Village Tileset/1.1 Tiles/Tileset2.png" id="20_6hawp"]
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
@@ -296,6 +296,9 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_66y4t"]
 radius = 10.2216
 height = 48.5441
+
+[sub_resource type="LabelSettings" id="LabelSettings_m8sek"]
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3nxqv"]
 texture = ExtResource("65_4sg5m")
@@ -771,43 +774,41 @@ script = ExtResource("3_q0siy")
 [node name="Button" type="Button" parent="CharacterBody2D/Camera2D"]
 offset_left = -839.631
 offset_top = -601.201
-offset_right = -767.631
-offset_bottom = -577.201
-icon = ExtResource("3_6ds4y")
+offset_right = -331.631
+offset_bottom = -93.201
+scale = Vector2(0.116262, 0.147418)
+icon = ExtResource("4_12b2n")
+flat = true
 
-[node name="FormsPop" type="ColorRect" parent="CharacterBody2D/Camera2D"]
-offset_left = -827.949
-offset_top = -561.992
-offset_right = -583.949
-offset_bottom = -436.992
-color = Color(0.176419, 0.176419, 0.176419, 1)
+[node name="Clipboard" type="Sprite2D" parent="CharacterBody2D/Camera2D"]
+position = Vector2(-699.449, -423.828)
+texture = ExtResource("4_12b2n")
 
-[node name="Label" type="Label" parent="CharacterBody2D/Camera2D/FormsPop"]
-layout_mode = 0
-offset_left = 8.76141
-offset_top = 39.2087
-offset_right = 150.761
-offset_bottom = 62.2087
-text = "Forms Completed:
-"
-
-[node name="Button" type="Button" parent="CharacterBody2D/Camera2D/FormsPop"]
-layout_mode = 0
-offset_left = 167.926
-offset_top = 7.46833
-offset_right = 239.926
-offset_bottom = 31.4683
+[node name="Button" type="Button" parent="CharacterBody2D/Camera2D/Clipboard"]
+offset_left = 5.84096
+offset_top = -82.1516
+offset_right = 77.841
+offset_bottom = -58.1516
 icon = ExtResource("4_sm6ab")
 flat = true
 
-[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D/Camera2D/FormsPop"]
-layout_mode = 0
-offset_left = 10.2216
-offset_top = 74.6833
-offset_right = 235.222
-offset_bottom = 101.683
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D/Camera2D/Clipboard"]
+z_index = 2
+offset_left = -71.5511
+offset_top = -1.86705
+offset_right = 78.4489
+offset_bottom = 25.1329
 max_value = 10.0
 value = 6.0
+
+[node name="Label" type="Label" parent="CharacterBody2D/Camera2D/Clipboard"]
+offset_left = -68.6306
+offset_top = -41.0758
+offset_right = 73.3694
+offset_bottom = -18.0758
+text = "Forms Completed:
+"
+label_settings = SubResource("LabelSettings_m8sek")
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -1021,5 +1022,5 @@ polygon = PackedVector2Array(66, 5, 66, 60, 77, 60, 78, 23, 179, 23, 179, 6)
 polygon = PackedVector2Array(68, 140, 76, 140, 78, 189, 178, 189, 178, 235, 66, 235)
 
 [connection signal="pressed" from="CharacterBody2D/Camera2D/Button" to="CharacterBody2D" method="_on_button_pressed"]
-[connection signal="pressed" from="CharacterBody2D/Camera2D/FormsPop/Button" to="CharacterBody2D/Camera2D" method="_on_button_pressed"]
+[connection signal="pressed" from="CharacterBody2D/Camera2D/Clipboard/Button" to="CharacterBody2D/Camera2D" method="_on_button_pressed"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]

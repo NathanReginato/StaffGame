@@ -36,4 +36,4 @@ func _process(_delta):
 	
 
 func _on_button_pressed():
-	$Camera2D/FormsPop.visible = true
+	$Camera2D/Clipboard.visible = true
