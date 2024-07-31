@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=79 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_xmtik"]
@@ -559,8 +559,6 @@ sources/0 = SubResource("TileSetAtlasSource_3nxqv")
 [sub_resource type="CircleShape2D" id="CircleShape2D_2035h"]
 radius = 9.05539
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8bxo1"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjaxg"]
 size = Vector2(8.17364, 9.65409)
 
@@ -838,6 +836,7 @@ texture = ExtResource("78_0vpvi")
 polygon = PackedVector2Array(272, 162, 294, 184, 317, 194, 359, 191, 361, 182, 358, 179, 309, 181, 279, 152, 271, 152)
 
 [node name="CampFireRock" type="StaticBody2D" parent="Static Assets/Starting Area"]
+position = Vector2(-3, -4)
 metadata/_edit_group_ = true
 
 [node name="Rock" type="Sprite2D" parent="Static Assets/Starting Area/CampFireRock"]
@@ -865,10 +864,6 @@ texture = ExtResource("73_8x6uv")
 z_index = 5
 position = Vector2(350, 106)
 texture = ExtResource("76_lox0x")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/Starting Area/Bush"]
-position = Vector2(350, 107)
-shape = SubResource("CircleShape2D_8bxo1")
 
 [node name="2" type="Sprite2D" parent="Static Assets/Starting Area"]
 position = Vector2(301, 140.5)
@@ -925,7 +920,7 @@ scale = Vector2(0.380167, 0.419743)
 texture = ExtResource("73_8x6uv")
 
 [node name="Tent" type="StaticBody2D" parent="Static Assets/Starting Area"]
-position = Vector2(395, 131.5)
+position = Vector2(407, 129)
 scale = Vector2(2.63042, 2.38241)
 metadata/_edit_group_ = true
 
@@ -965,19 +960,19 @@ animation = &"gate_open"
 frame = 5
 frame_progress = 1.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Static Assets/GateArea"]
+[node name="Walls" type="StaticBody2D" parent="Static Assets/GateArea"]
 
-[node name="TileMap" type="TileMap" parent="Static Assets/GateArea/StaticBody2D"]
+[node name="TileMap" type="TileMap" parent="Static Assets/GateArea/Walls"]
 z_index = 100
 position = Vector2(-78, -45)
 tile_set = SubResource("TileSet_hyn4m")
 format = 2
 layer_0/tile_data = PackedInt32Array(458761, 327680, 1, 720905, 327680, 2, 196617, 851968, 0, 983049, 851968, 1, 196618, 65536, 0, 196619, 131072, 0, 196620, 196608, 0, 196621, 262144, 0, 196622, 327680, 0, 196623, 393216, 0, 983050, 65536, 0, 983051, 131072, 0, 983052, 196608, 0, 983053, 262144, 0, 983054, 327680, 0, 983055, 393216, 0)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Static Assets/GateArea/StaticBody2D"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Static Assets/GateArea/Walls"]
 polygon = PackedVector2Array(66, 5, 66, 60, 77, 60, 78, 23, 179, 23, 179, 6)
 
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/GateArea/StaticBody2D"]
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/GateArea/Walls"]
 polygon = PackedVector2Array(68, 140, 76, 140, 78, 189, 178, 189, 178, 235, 66, 235)
 
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
