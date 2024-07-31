@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=71 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="PackedScene" uid="uid://cmhrcr8v7rkmj" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="Texture2D" uid="uid://clpyvl81ogfad" path="res://Field Tileset/2 Objects/5 Grass/4.png" id="6_vevag"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="25_b3jwq"]
 [ext_resource type="Texture2D" uid="uid://dp6xeylfgurtl" path="res://Field Tileset/2 Objects/2 Fence/7.png" id="25_o5cc2"]
 [ext_resource type="Texture2D" uid="uid://dwquffjdqi2cp" path="res://Field Tileset/2 Objects/2 Fence/8.png" id="25_qnud5"]
+[ext_resource type="Texture2D" uid="uid://ds3yfq2ty1qeo" path="res://One Off Assets/resultmesshall.png" id="26_5qslv"]
 [ext_resource type="Texture2D" uid="uid://chp0o4jc8gf5k" path="res://Field Tileset/2 Objects/9 Bush/6.png" id="26_iwu0m"]
 [ext_resource type="Texture2D" uid="uid://be0ibuga328rj" path="res://Field Tileset/2 Objects/9 Bush/5.png" id="27_wi0if"]
 [ext_resource type="Texture2D" uid="uid://bn3mrscfitm40" path="res://Field Tileset/2 Objects/9 Bush/4.png" id="28_axu1a"]
@@ -521,6 +522,7 @@ sources/0 = SubResource("TileSetAtlasSource_bm2i7")
 position = Vector2(-28, -7)
 
 [node name="Player" parent="." instance=ExtResource("1_6wg58")]
+up_direction = Vector2(0.707107, 0.707107)
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -1042,5 +1044,36 @@ polygon = PackedVector2Array(66, 5, 66, 60, 77, 60, 78, 23, 179, 23, 179, 6)
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/GateArea/Walls"]
 polygon = PackedVector2Array(68, 140, 76, 140, 78, 189, 178, 189, 178, 235, 66, 235)
 
+[node name="MessHall" type="Node2D" parent="Static Assets/GateArea"]
+position = Vector2(-18, -16)
+metadata/_edit_group_ = true
+
+[node name="6" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
+position = Vector2(-93, -52)
+texture = ExtResource("85_5bxpn")
+
+[node name="7" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
+position = Vector2(-55, -28)
+texture = ExtResource("85_5bxpn")
+
+[node name="8" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
+position = Vector2(-9, -20)
+texture = ExtResource("85_5bxpn")
+
+[node name="9" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
+position = Vector2(23.0001, -37)
+texture = ExtResource("85_5bxpn")
+
+[node name="10" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
+position = Vector2(51, -55)
+texture = ExtResource("85_5bxpn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
+z_index = 10
+position = Vector2(-15, -94)
+scale = Vector2(0.345833, 0.320139)
+texture = ExtResource("26_5qslv")
+
+[connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]

@@ -1,13 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckos1puhxvs2q"]
+[gd_scene load_steps=19 format=3 uid="uid://bil0n7w58nkos"]
 
-[ext_resource type="Texture2D" uid="uid://cdtljdmq2x60r" path="res://One Off Assets/16x16.png" id="1_as1nn"]
-[ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="1_lsitf"]
-[ext_resource type="PackedScene" uid="uid://cmhrcr8v7rkmj" path="res://Player.tscn" id="4_bqghp"]
-[ext_resource type="Texture2D" uid="uid://cxji70s343ld8" path="res://Field Tileset/2 Objects/5 Grass/2.png" id="4_ldcfi"]
-[ext_resource type="Texture2D" uid="uid://btbu267ahdpag" path="res://Field Tileset/2 Objects/5 Grass/3.png" id="5_oi8oe"]
+[ext_resource type="Texture2D" uid="uid://cdtljdmq2x60r" path="res://One Off Assets/16x16.png" id="1_wq1qx"]
+[ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="2_24c2g"]
+[ext_resource type="Texture2D" uid="uid://cxji70s343ld8" path="res://Field Tileset/2 Objects/5 Grass/2.png" id="3_4e8fo"]
+[ext_resource type="Texture2D" uid="uid://btbu267ahdpag" path="res://Field Tileset/2 Objects/5 Grass/3.png" id="4_ymtiv"]
+[ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="5_ckuo2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4l4s"]
-texture = ExtResource("1_as1nn")
+texture = ExtResource("1_wq1qx")
 0:0/0 = 0
 1:0/0 = 0
 3:0/0 = 0
@@ -552,7 +552,7 @@ texture = ExtResource("1_as1nn")
 18:20/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lq88g"]
-texture = ExtResource("1_lsitf")
+texture = ExtResource("2_24c2g")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -815,7 +815,7 @@ sources/4 = SubResource("TileSetAtlasSource_b4l4s")
 sources/5 = SubResource("TileSetAtlasSource_lq88g")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s5jss"]
-texture = ExtResource("1_as1nn")
+texture = ExtResource("1_wq1qx")
 0:0/0 = 0
 1:0/0 = 0
 3:0/0 = 0
@@ -1363,7 +1363,7 @@ texture = ExtResource("1_as1nn")
 sources/1 = SubResource("TileSetAtlasSource_s5jss")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cdyyp"]
-texture = ExtResource("1_as1nn")
+texture = ExtResource("1_wq1qx")
 0:0/0 = 0
 1:0/0 = 0
 3:0/0 = 0
@@ -1931,7 +1931,7 @@ b = Vector2(318, 48)
 radius = 7.0
 height = 18.0
 
-[node name="Scene2" type="Node2D"]
+[node name="Office" type="Node2D"]
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(-1, -6)
@@ -2009,13 +2009,13 @@ shape = SubResource("CapsuleShape2D_e41hv")
 
 [node name="2" type="Sprite2D" parent="Static Assets"]
 position = Vector2(263, 262)
-texture = ExtResource("4_ldcfi")
+texture = ExtResource("3_4e8fo")
 
 [node name="3" type="Sprite2D" parent="Static Assets"]
 position = Vector2(295, 261)
-texture = ExtResource("5_oi8oe")
+texture = ExtResource("4_ymtiv")
 
-[node name="Player" parent="." instance=ExtResource("4_bqghp")]
+[node name="Player" parent="." instance=ExtResource("5_ckuo2")]
 position = Vector2(-67, 91)
 up_direction = Vector2(0.707107, 0.707107)
 
