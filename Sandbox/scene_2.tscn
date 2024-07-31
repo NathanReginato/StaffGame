@@ -1171,5 +1171,6 @@ shape = SubResource("SegmentShape2D_a60xu")
 
 [node name="Player" parent="." instance=ExtResource("4_bqghp")]
 position = Vector2(-67, 91)
+up_direction = Vector2(0.707107, 0.707107)
 
 [connection signal="body_entered" from="Static Assets/Sandbox" to="Player" method="_on_sandbox_body_entered"]
