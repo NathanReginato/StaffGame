@@ -35,3 +35,13 @@ func _process(_delta):
 
 func _on_button_pressed():
 	$Camera2D/Clipboard.visible = true
+
+
+func _on_scene_2_body_entered(body):
+	if "is_player" in body and body.is_player == true:
+			get_tree().change_scene_to_file("res://scene_2.tscn")
+
+
+func _on_sandbox_body_entered(body):
+	if "is_player" in body and body.is_player == true:
+			get_tree().change_scene_to_file("res://Sandbox.tscn") # Replace with function body.
