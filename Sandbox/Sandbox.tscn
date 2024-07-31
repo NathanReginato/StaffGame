@@ -1,6 +1,6 @@
 [gd_scene load_steps=49 format=3 uid="uid://okj2yik4pj41"]
 
-[ext_resource type="PackedScene" uid="uid://cmhrcr8v7rkmj" path="res://Player.tscn" id="1_6wg58"]
+[ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="Texture2D" uid="uid://4plsjkxenc5j" path="res://Village Tileset/1.1 Tiles/Tileset2.png" id="20_6hawp"]
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
 [ext_resource type="Texture2D" uid="uid://dliy1elthu5r" path="res://Village Tileset/3 Animated Objects/DoubleDoor2.png" id="20_alu50"]
@@ -755,5 +755,6 @@ position = Vector2(-15, -94)
 scale = Vector2(0.345833, 0.320139)
 texture = ExtResource("26_5qslv")
 
+[connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]

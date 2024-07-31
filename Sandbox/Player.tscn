@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cmhrcr8v7rkmj"]
+[gd_scene load_steps=42 format=3 uid="uid://dr3370ostip2o"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_slhst"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_k5a1r"]
@@ -315,6 +315,7 @@ flat = true
 metadata/_edit_use_anchors_ = true
 
 [node name="Clipboard" type="Sprite2D" parent="Camera2D"]
+visible = false
 position = Vector2(-341.693, -207.246)
 scale = Vector2(0.409466, 0.45519)
 texture = ExtResource("4_8n4xh")
