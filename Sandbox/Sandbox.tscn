@@ -1,4 +1,4 @@
-[gd_scene load_steps=84 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=87 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_xmtik"]
@@ -8,7 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://4plsjkxenc5j" path="res://Village Tileset/1.1 Tiles/Tileset2.png" id="20_6hawp"]
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
 [ext_resource type="Texture2D" uid="uid://dliy1elthu5r" path="res://Village Tileset/3 Animated Objects/DoubleDoor2.png" id="20_alu50"]
-[ext_resource type="Texture2D" uid="uid://dyrkmnfa8bcl" path="res://One Off Assets/resultmesshall.png" id="26_5qslv"]
+[ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="25_b3jwq"]
+[ext_resource type="Texture2D" uid="uid://ds3yfq2ty1qeo" path="res://One Off Assets/resultmesshall.png" id="26_5qslv"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="65_4sg5m"]
 [ext_resource type="Texture2D" uid="uid://bilo5448unwv1" path="res://Field Tileset/3 Animated Objects/2 Campfire/2.png" id="72_t0ueo"]
 [ext_resource type="Texture2D" uid="uid://bk5c0k21rpixs" path="res://Field Tileset/2 Objects/1 Shadow/3.png" id="73_8x6uv"]
@@ -675,6 +676,13 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SystemFont" id="SystemFont_x1vil"]
+font_names = PackedStringArray("Pixeloid Mono")
+
+[sub_resource type="LabelSettings" id="LabelSettings_rarfx"]
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bm2i7"]
 texture = ExtResource("20_6hawp")
 texture_region_size = Vector2i(16, 64)
@@ -981,19 +989,6 @@ texture = ExtResource("76_lox0x")
 [node name="GateArea" type="Node2D" parent="Static Assets"]
 position = Vector2(620, 182)
 
-[node name="ColorRect" type="ColorRect" parent="Static Assets/GateArea"]
-offset_left = 21.0
-offset_top = 12.0
-offset_right = 61.0
-offset_bottom = 52.0
-color = Color(0.306923, 0.306923, 0.306923, 1)
-metadata/_edit_group_ = true
-
-[node name="GateText" type="Label" parent="Static Assets/GateArea/ColorRect"]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Hello"
-
 [node name="Gate" type="Area2D" parent="Static Assets/GateArea"]
 position = Vector2(72, 73)
 script = ExtResource("20_8bf70")
@@ -1007,13 +1002,34 @@ shape = SubResource("RectangleShape2D_l0cn7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/GateArea/Gate/Gate"]
 position = Vector2(0.5, 30)
 shape = SubResource("RectangleShape2D_exjar")
-disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static Assets/GateArea/Gate/Gate"]
 position = Vector2(18.25, 17)
 scale = Vector2(0.97541, 1)
 sprite_frames = SubResource("SpriteFrames_upwwf")
 animation = &"gate_open"
+
+[node name="GateInfo" type="Node2D" parent="Static Assets/GateArea/Gate"]
+z_index = 200
+position = Vector2(-28, -146)
+
+[node name="Sprite2D" type="Sprite2D" parent="Static Assets/GateArea/Gate/GateInfo"]
+position = Vector2(25, 94)
+scale = Vector2(0.27004, 0.297094)
+texture = ExtResource("25_b3jwq")
+
+[node name="GateText" type="Label" parent="Static Assets/GateArea/Gate/GateInfo/Sprite2D"]
+offset_left = -114.798
+offset_top = -6.73188
+offset_right = 140.202
+offset_bottom = 50.2681
+theme_override_fonts/font = SubResource("SystemFont_x1vil")
+theme_override_font_sizes/font_size = 0
+text = "Fill out a form
+to open the gate!"
+label_settings = SubResource("LabelSettings_rarfx")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Walls" type="StaticBody2D" parent="Static Assets/GateArea"]
 
@@ -1063,3 +1079,4 @@ texture = ExtResource("26_5qslv")
 [connection signal="pressed" from="Player/Camera2D/Button" to="Player" method="_on_button_pressed"]
 [connection signal="pressed" from="Player/Camera2D/Clipboard/Button" to="Player/Camera2D" method="_on_button_pressed"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
+[connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]
