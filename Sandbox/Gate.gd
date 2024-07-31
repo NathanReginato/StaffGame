@@ -6,5 +6,5 @@ func _ready():
 
 
 func _on_body_entered(body):
-	print("player entered", body.is_player)
+	print("player entered", body)
 	get_node("Gate/AnimatedSprite2D").play("gate_open")
