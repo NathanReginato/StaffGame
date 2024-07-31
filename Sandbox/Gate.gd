@@ -1,10 +1,8 @@
 extends Area2D
 var _gate_open = false
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	self.monitoring = true
-	get_node("GateInfo").visible = false
 
 
 func _on_body_entered(body):
