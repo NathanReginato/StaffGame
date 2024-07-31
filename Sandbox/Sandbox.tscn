@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=84 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_xmtik"]
@@ -749,30 +749,30 @@ sources/0 = SubResource("TileSetAtlasSource_bm2i7")
 [node name="Game" type="Node2D"]
 position = Vector2(-28, -7)
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+[node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(330, 148)
 scale = Vector2(0.684825, 0.535595)
 disable_mode = 2
 script = ExtResource("1_onsfm")
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 1
 position = Vector2(-5.34058e-05, -7.62939e-06)
 scale = Vector2(1.9281, 2.18769)
 sprite_frames = SubResource("SpriteFrames_oo55t")
 animation = &"WalkEast"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 z_index = 1
 position = Vector2(-1.52588e-05, -1.14441e-05)
 shape = SubResource("CapsuleShape2D_66y4t")
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-1.52588e-05, -1.14441e-05)
 script = ExtResource("3_q0siy")
 
-[node name="Button" type="Button" parent="CharacterBody2D/Camera2D"]
+[node name="Button" type="Button" parent="Player/Camera2D"]
 offset_left = -839.631
 offset_top = -601.201
 offset_right = -331.631
@@ -781,11 +781,11 @@ scale = Vector2(0.116262, 0.147418)
 icon = ExtResource("4_12b2n")
 flat = true
 
-[node name="Clipboard" type="Sprite2D" parent="CharacterBody2D/Camera2D"]
+[node name="Clipboard" type="Sprite2D" parent="Player/Camera2D"]
 position = Vector2(-699.449, -423.828)
 texture = ExtResource("4_12b2n")
 
-[node name="Button" type="Button" parent="CharacterBody2D/Camera2D/Clipboard"]
+[node name="Button" type="Button" parent="Player/Camera2D/Clipboard"]
 offset_left = 5.84096
 offset_top = -82.1516
 offset_right = 77.841
@@ -793,7 +793,7 @@ offset_bottom = -58.1516
 icon = ExtResource("4_sm6ab")
 flat = true
 
-[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D/Camera2D/Clipboard"]
+[node name="ProgressBar" type="ProgressBar" parent="Player/Camera2D/Clipboard"]
 z_index = 2
 offset_left = -71.5511
 offset_top = -1.86705
@@ -802,7 +802,7 @@ offset_bottom = 25.1329
 max_value = 10.0
 value = 6.0
 
-[node name="Label" type="Label" parent="CharacterBody2D/Camera2D/Clipboard"]
+[node name="Label" type="Label" parent="Player/Camera2D/Clipboard"]
 offset_left = -68.6306
 offset_top = -41.0758
 offset_right = 73.3694
@@ -981,10 +981,22 @@ texture = ExtResource("76_lox0x")
 [node name="GateArea" type="Node2D" parent="Static Assets"]
 position = Vector2(620, 182)
 
+[node name="ColorRect" type="ColorRect" parent="Static Assets/GateArea"]
+offset_left = 21.0
+offset_top = 12.0
+offset_right = 61.0
+offset_bottom = 52.0
+color = Color(0.306923, 0.306923, 0.306923, 1)
+metadata/_edit_group_ = true
+
+[node name="GateText" type="Label" parent="Static Assets/GateArea/ColorRect"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Hello"
+
 [node name="Gate" type="Area2D" parent="Static Assets/GateArea"]
 position = Vector2(72, 73)
 script = ExtResource("20_8bf70")
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/GateArea/Gate"]
 position = Vector2(-22, 30)
@@ -995,14 +1007,13 @@ shape = SubResource("RectangleShape2D_l0cn7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/GateArea/Gate/Gate"]
 position = Vector2(0.5, 30)
 shape = SubResource("RectangleShape2D_exjar")
+disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Static Assets/GateArea/Gate/Gate"]
 position = Vector2(18.25, 17)
 scale = Vector2(0.97541, 1)
 sprite_frames = SubResource("SpriteFrames_upwwf")
 animation = &"gate_open"
-frame = 5
-frame_progress = 1.0
 
 [node name="Walls" type="StaticBody2D" parent="Static Assets/GateArea"]
 
@@ -1049,6 +1060,6 @@ position = Vector2(-15, -94)
 scale = Vector2(0.345833, 0.320139)
 texture = ExtResource("26_5qslv")
 
-[connection signal="pressed" from="CharacterBody2D/Camera2D/Button" to="CharacterBody2D" method="_on_button_pressed"]
-[connection signal="pressed" from="CharacterBody2D/Camera2D/Clipboard/Button" to="CharacterBody2D/Camera2D" method="_on_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Button" to="Player" method="_on_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Clipboard/Button" to="Player/Camera2D" method="_on_button_pressed"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]

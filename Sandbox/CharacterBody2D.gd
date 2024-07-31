@@ -3,8 +3,6 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 var is_player = true
 
-
-
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed
