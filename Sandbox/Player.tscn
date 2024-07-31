@@ -356,4 +356,5 @@ text = "Complete Form
 
 [connection signal="pressed" from="Camera2D/Button" to="Camera2D" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera2D/Clipboard/CloseButton" to="Camera2D" method="_on_close_button_pressed"]
+[connection signal="pressed" from="Camera2D/Clipboard/FormComletedButton" to="." method="_on_form_comleted_button_pressed"]
 [connection signal="pressed" from="Camera2D/Clipboard/FormComletedButton" to="Camera2D/Clipboard/ProgressBar" method="_on_form_comleted_button_pressed"]

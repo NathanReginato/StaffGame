@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
 [ext_resource type="Texture2D" uid="uid://dliy1elthu5r" path="res://Village Tileset/3 Animated Objects/DoubleDoor2.png" id="20_alu50"]
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="25_b3jwq"]
-[ext_resource type="Texture2D" uid="uid://dyrkmnfa8bcl" path="res://One Off Assets/resultmesshall.png" id="26_5qslv"]
+[ext_resource type="Texture2D" uid="uid://ds3yfq2ty1qeo" path="res://One Off Assets/resultmesshall.png" id="26_5qslv"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="65_4sg5m"]
 [ext_resource type="Texture2D" uid="uid://bilo5448unwv1" path="res://Field Tileset/3 Animated Objects/2 Campfire/2.png" id="72_t0ueo"]
 [ext_resource type="Texture2D" uid="uid://bk5c0k21rpixs" path="res://Field Tileset/2 Objects/1 Shadow/3.png" id="73_8x6uv"]
@@ -482,6 +482,7 @@ sources/0 = SubResource("TileSetAtlasSource_bm2i7")
 position = Vector2(-28, -7)
 
 [node name="Player" parent="." instance=ExtResource("1_6wg58")]
+up_direction = Vector2(0.707107, 0.707107)
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -714,7 +715,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="TileMap" type="TileMap" parent="Static Assets/GateArea/Walls"]
 z_index = 100
-position = Vector2(-78, -45)
+position = Vector2(-78, -44)
 tile_set = SubResource("TileSet_hyn4m")
 format = 2
 layer_0/tile_data = PackedInt32Array(458761, 327680, 1, 720905, 327680, 2, 196617, 851968, 0, 983049, 851968, 1, 196618, 65536, 0, 196619, 131072, 0, 196620, 196608, 0, 196621, 262144, 0, 196622, 327680, 0, 196623, 393216, 0, 983050, 65536, 0, 983051, 131072, 0, 983052, 196608, 0, 983053, 262144, 0, 983054, 327680, 0, 983055, 393216, 0)
