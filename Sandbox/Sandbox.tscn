@@ -1,7 +1,10 @@
-[gd_scene load_steps=80 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=83 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_xmtik"]
+[ext_resource type="Texture2D" uid="uid://bdpomuw4ydnn4" path="res://Button Itch Pack/Select/Select1.png" id="3_6ds4y"]
+[ext_resource type="Script" path="res://Camera2D.gd" id="3_q0siy"]
+[ext_resource type="Texture2D" uid="uid://bveaboh7ab1es" path="res://Button Itch Pack/Back/Back1.png" id="4_sm6ab"]
 [ext_resource type="Texture2D" uid="uid://4plsjkxenc5j" path="res://Village Tileset/1.1 Tiles/Tileset2.png" id="20_6hawp"]
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
 [ext_resource type="Texture2D" uid="uid://dliy1elthu5r" path="res://Village Tileset/3 Animated Objects/DoubleDoor2.png" id="20_alu50"]
@@ -745,7 +748,7 @@ sources/0 = SubResource("TileSetAtlasSource_bm2i7")
 position = Vector2(-28, -7)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-position = Vector2(241, 116)
+position = Vector2(330, 148)
 scale = Vector2(0.684825, 0.535595)
 disable_mode = 2
 script = ExtResource("1_onsfm")
@@ -765,6 +768,48 @@ shape = SubResource("CapsuleShape2D_66y4t")
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
 position = Vector2(-1.52588e-05, -1.14441e-05)
+script = ExtResource("3_q0siy")
+
+[node name="Button" type="Button" parent="CharacterBody2D/Camera2D"]
+offset_left = -839.631
+offset_top = -601.201
+offset_right = -767.631
+offset_bottom = -577.201
+icon = ExtResource("3_6ds4y")
+
+[node name="FormsPop" type="ColorRect" parent="CharacterBody2D/Camera2D"]
+offset_left = -827.949
+offset_top = -561.992
+offset_right = -583.949
+offset_bottom = -436.992
+color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[node name="Label" type="Label" parent="CharacterBody2D/Camera2D/FormsPop"]
+layout_mode = 0
+offset_left = 8.76141
+offset_top = 39.2087
+offset_right = 150.761
+offset_bottom = 62.2087
+text = "Forms Completed:
+"
+
+[node name="Button" type="Button" parent="CharacterBody2D/Camera2D/FormsPop"]
+layout_mode = 0
+offset_left = 167.926
+offset_top = 7.46833
+offset_right = 239.926
+offset_bottom = 31.4683
+icon = ExtResource("4_sm6ab")
+flat = true
+
+[node name="ProgressBar" type="ProgressBar" parent="CharacterBody2D/Camera2D/FormsPop"]
+layout_mode = 0
+offset_left = 10.2216
+offset_top = 74.6833
+offset_right = 235.222
+offset_bottom = 101.683
+max_value = 10.0
+value = 6.0
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -980,4 +1025,6 @@ polygon = PackedVector2Array(66, 5, 66, 60, 77, 60, 78, 23, 179, 23, 179, 6)
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/GateArea/StaticBody2D"]
 polygon = PackedVector2Array(68, 140, 76, 140, 78, 189, 178, 189, 178, 235, 66, 235)
 
+[connection signal="pressed" from="CharacterBody2D/Camera2D/Button" to="CharacterBody2D" method="_on_button_pressed"]
+[connection signal="pressed" from="CharacterBody2D/Camera2D/FormsPop/Button" to="CharacterBody2D/Camera2D" method="_on_button_pressed"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]

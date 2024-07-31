@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 @onready var _animated_sprite = $AnimatedSprite2D
 
+
+
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	velocity = input_direction * speed
@@ -30,5 +32,8 @@ func _process(_delta):
 		_animated_sprite.play("WalkSouth")
 	else:
 		_animated_sprite.stop()
+		
+	
 
-
+func _on_button_pressed():
+	$Camera2D/FormsPop.visible = true
