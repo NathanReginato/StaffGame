@@ -1,10 +1,11 @@
-[gd_scene load_steps=88 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=89 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_onsfm"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_xmtik"]
 [ext_resource type="Script" path="res://Camera2D.gd" id="3_q0siy"]
 [ext_resource type="Texture2D" uid="uid://bpkgech86isub" path="res://clipboard.png" id="4_12b2n"]
 [ext_resource type="Texture2D" uid="uid://bveaboh7ab1es" path="res://Button Itch Pack/Back/Back1.png" id="4_sm6ab"]
+[ext_resource type="Script" path="res://ProgressBar.gd" id="6_vw8mn"]
 [ext_resource type="Texture2D" uid="uid://4plsjkxenc5j" path="res://Village Tileset/1.1 Tiles/Tileset2.png" id="20_6hawp"]
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
 [ext_resource type="Texture2D" uid="uid://dliy1elthu5r" path="res://Village Tileset/3 Animated Objects/DoubleDoor2.png" id="20_alu50"]
@@ -764,7 +765,6 @@ position = Vector2(330, 148)
 scale = Vector2(0.684825, 0.535595)
 disable_mode = 2
 script = ExtResource("1_onsfm")
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 z_index = 1
@@ -792,16 +792,26 @@ icon = ExtResource("4_12b2n")
 flat = true
 
 [node name="Clipboard" type="Sprite2D" parent="Player/Camera2D"]
+visible = false
 position = Vector2(-699.449, -423.828)
 texture = ExtResource("4_12b2n")
 
-[node name="Button" type="Button" parent="Player/Camera2D/Clipboard"]
+[node name="CloseButton" type="Button" parent="Player/Camera2D/Clipboard"]
 offset_left = 5.84096
 offset_top = -82.1516
 offset_right = 77.841
 offset_bottom = -58.1516
 icon = ExtResource("4_sm6ab")
 flat = true
+
+[node name="FormsCompleted" type="Label" parent="Player/Camera2D/Clipboard"]
+offset_left = -68.6306
+offset_top = -41.0758
+offset_right = 73.3694
+offset_bottom = -18.0758
+text = "Forms Completed:
+"
+label_settings = SubResource("LabelSettings_m8sek")
 
 [node name="ProgressBar" type="ProgressBar" parent="Player/Camera2D/Clipboard"]
 z_index = 2
@@ -810,16 +820,15 @@ offset_top = -1.86705
 offset_right = 78.4489
 offset_bottom = 25.1329
 max_value = 10.0
-value = 6.0
+script = ExtResource("6_vw8mn")
 
-[node name="Label" type="Label" parent="Player/Camera2D/Clipboard"]
-offset_left = -68.6306
-offset_top = -41.0758
-offset_right = 73.3694
-offset_bottom = -18.0758
-text = "Forms Completed:
+[node name="FormComletedButton" type="Button" parent="Player/Camera2D/Clipboard"]
+offset_left = -76.0
+offset_top = 50.0
+offset_right = 78.0
+offset_bottom = 81.0
+text = "Complete Form
 "
-label_settings = SubResource("LabelSettings_m8sek")
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -1015,7 +1024,7 @@ shape = SubResource("RectangleShape2D_l0cn7")
 
 [node name="Gate" type="StaticBody2D" parent="Static Assets/GateArea/Gate"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/GateArea/Gate/Gate"]
+[node name="GateBarrier" type="CollisionShape2D" parent="Static Assets/GateArea/Gate/Gate"]
 position = Vector2(0.5, 30)
 shape = SubResource("RectangleShape2D_exjar")
 
@@ -1093,7 +1102,9 @@ scale = Vector2(0.345833, 0.320139)
 texture = ExtResource("26_5qslv")
 
 [connection signal="pressed" from="Player/Camera2D/Button" to="Player" method="_on_button_pressed"]
-[connection signal="pressed" from="Player/Camera2D/Clipboard/Button" to="Player/Camera2D" method="_on_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Clipboard/CloseButton" to="Player/Camera2D" method="_on_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Clipboard/FormComletedButton" to="Player" method="_on_form_comleted_button_pressed"]
+[connection signal="pressed" from="Player/Camera2D/Clipboard/FormComletedButton" to="Player/Camera2D/Clipboard/ProgressBar" method="_on_form_comleted_button_pressed"]
 [connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]

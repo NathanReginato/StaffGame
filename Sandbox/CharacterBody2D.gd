@@ -2,6 +2,7 @@ extends CharacterBody2D
 @export var speed = 400
 @onready var _animated_sprite = $AnimatedSprite2D
 var is_player = true
+var forms_count = 0
 
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -45,3 +46,7 @@ func _on_scene_2_body_entered(body):
 func _on_sandbox_body_entered(body):
 	if "is_player" in body and body.is_player == true:
 			get_tree().change_scene_to_file("res://Sandbox.tscn") # Replace with function body.
+
+
+func _on_form_comleted_button_pressed():
+	forms_count += 1
