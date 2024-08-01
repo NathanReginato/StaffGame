@@ -14,6 +14,9 @@ var dialog_index = 0
 var shown = false
 var showing = false
 
+func _ready():
+	var dialog_input = InputEvent
+
 func _on_area_2d_body_entered(body):
 	if "is_player" in body and body.is_player == true and !showing and !shown:
 		visible = true
@@ -26,7 +29,6 @@ func _on_area_2d_body_entered(body):
 func set_ticker_text():
 #	Set the text to the current position + some number of characters
 	for dialog in dialog_list:
-		await Input.is_action_pressed("ui_select")
 		# Initialize an empty variable to store characters
 		var temp_variable = ""
 		# Iterate through each character in the string

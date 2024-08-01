@@ -294,7 +294,7 @@ default_font = ExtResource("6_eyrlg")
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_82kbo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svtpl"]
-bg_color = Color(0.490924, 0.599985, 0.878529, 0.470588)
+bg_color = Color(0.490196, 0.6, 0.878431, 0.631373)
 
 [node name="Player" type="CharacterBody2D"]
 up_direction = Vector2(0.707107, 0.707107)
