@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btbu267ahdpag" path="res://Field Tileset/2 Objects/5 Grass/3.png" id="4_ymtiv"]
 [ext_resource type="Texture2D" uid="uid://c01m5xiw6w5hx" path="res://One Off Assets/camp office.png" id="5_2t2oo"]
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="5_ckuo2"]
-[ext_resource type="Texture2D" uid="uid://3lyk6a3fb3ta" path="res://grizzled treant/GrizzledTreant.png" id="6_yryca"]
+[ext_resource type="Texture2D" uid="uid://dtsitc6cp7wur" path="res://grizzled treant/treantupscaled.png" id="7_jgl36"]
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="8_eusx0"]
 [ext_resource type="Script" path="res://TreantDialog.gd" id="9_he4em"]
 [ext_resource type="FontFile" uid="uid://cow8adf43n4sp" path="res://One Off Assets/PixeloidMono.ttf" id="10_qvnen"]
@@ -1936,32 +1936,32 @@ b = Vector2(318, 48)
 radius = 7.0
 height = 18.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pi4ao"]
-atlas = ExtResource("6_yryca")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3fcd"]
+atlas = ExtResource("7_jgl36")
+region = Rect2(48, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2mwnm"]
-atlas = ExtResource("6_yryca")
-region = Rect2(32, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_gvktl"]
+atlas = ExtResource("7_jgl36")
+region = Rect2(96, 0, 48, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2b62"]
-atlas = ExtResource("6_yryca")
-region = Rect2(48, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_t821i"]
+atlas = ExtResource("7_jgl36")
+region = Rect2(144, 0, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6euxm"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_6p0tl"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pi4ao")
+"texture": SubResource("AtlasTexture_k3fcd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2mwnm")
+"texture": SubResource("AtlasTexture_gvktl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_w2b62")
+"texture": SubResource("AtlasTexture_t821i")
 }],
 "loop": true,
-"name": &"idle",
+"name": &"default",
 "speed": 5.0
 }]
 
@@ -2069,7 +2069,6 @@ texture = ExtResource("5_2t2oo")
 
 [node name="Player" parent="." instance=ExtResource("5_ckuo2")]
 position = Vector2(-67, 91)
-up_direction = Vector2(0.707107, 0.707107)
 
 [node name="OfficeTreant" type="CharacterBody2D" parent="."]
 position = Vector2(79, 19)
@@ -2077,12 +2076,10 @@ motion_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OfficeTreant"]
 z_index = 100
-position = Vector2(144, 95)
-scale = Vector2(2, 2)
-sprite_frames = SubResource("SpriteFrames_6euxm")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.754555
+position = Vector2(144, 94)
+scale = Vector2(0.686382, 0.791156)
+sprite_frames = SubResource("SpriteFrames_6p0tl")
+autoplay = "default"
 speed_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeTreant"]
@@ -2106,8 +2103,8 @@ offset_left = -110.652
 offset_top = -22.0821
 offset_right = 139.348
 offset_bottom = 67.9179
-text = "test fonbt"
 label_settings = SubResource("LabelSettings_ebeot")
+autowrap_mode = 3
 
 [connection signal="body_entered" from="Static Assets/Sandbox" to="Player" method="_on_sandbox_body_entered"]
 [connection signal="body_entered" from="OfficeTreant/Area2D" to="OfficeTreant/Area2D/Sprite2D" method="_on_area_2d_body_entered"]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 @export var speed = 400
 @onready var _animated_sprite = $AnimatedSprite2D
+@onready var leaderboard = $Camera2D/Leaderboard
+
 @onready var _walking_sound : AudioStreamPlayer2D = $AnimatedSprite2D/AudioStreamPlayer2D
 var is_player = true
 var forms_count = 0
@@ -51,3 +53,12 @@ func _on_sandbox_body_entered(body):
 
 func _on_form_comleted_button_pressed():
 	forms_count += 1
+
+func _input(event):
+	if event.is_action_pressed("leaderboard") and leaderboard.visible == false:
+		leaderboard.visible = true
+		#print("open leaderboard")
+		
+	elif event.is_action_pressed("leaderboard") and leaderboard.visible == true:
+		leaderboard.visible = false
+		#print("close leaderboard")
