@@ -301,7 +301,7 @@ shape = SubResource("CapsuleShape2D_b65xm")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(282, 127)
 scale = Vector2(0.684825, 0.535595)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 script = ExtResource("3_52prf")
 
 [node name="Button" type="Button" parent="Camera2D"]
