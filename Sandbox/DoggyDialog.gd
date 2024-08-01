@@ -3,61 +3,80 @@ extends Sprite2D
 @onready var label = $DoggyText
 signal time_for_a_walk
 
-var dialog_list = [
+var _dialog_list = [
 	[
-		"Hello! You must\nbe Dan",
-		"Welcome to Camp!\nWoof! I'm here to\nshow you around",
-		"Let me show you\nwhere we begin"
+		["Hello! You must be Dan."],
+		["My name is Javi."],
+		["Welcome to Camp. I guess I'll show you around."]
 	],
 	[
-		"Oh! This gate appears to be locked!",
-		"Where's your ice cream sandwich key? ... You don't have any??",
-		"There's only one way at camp to get ice cream sandwiches and it's...",
-		"FILLING OUT FORMS!!!",
-		"Have you filled out any of forms yet? Let's check your status bar.",
-		"Crikey, your clipboard is empty! You haven't filled out any forms. Please go to your campanion app and come back when you've got one done."
+		["Why's this gate locked"],
+		["Where's your ice cream sandwich key? ...", "You don't have any??"],
+		["There's only one way at camp to get", "ice cream sandwiches and it's...", "by bringing me Diet Coke", "........", "Or", "Filling out your onboarding forms !!!!"],
+		["Have you filled out any forms yet?", "Let's check your status bar."],
+		["Crikey, your clipboard is empty!",  "You haven't filled out any forms.", "Please go to your Campanion App",  "and come back when you've got one done."]
 	]
 ]
+var _intro_dialog_index = 0
+var _instructional_dialog_index = 1
 
-var dialog_index = 0
-var dialog_tree_index = 0
-var willing_to_engage_in_speaking = true
-var currently_speaking = false
+var _dialog_index = 0
+var _dialog_tree_index = 0
+var _willing_to_engage_in_speaking = true
+var _currently_speaking = false
+var _done_talking
+
+var _speaking_speed = 0.05
+var _speaking_pause = 1
 
 func _input(event):
-	if event.is_action_pressed("ui_select") and currently_speaking:
-		var d = dialog_list[dialog_tree_index][dialog_index]
-		var d2 = dialog_list[dialog_tree_index]
-		print("dialog index ", dialog_index, " ", len(d2))
-		await set_ticker_text(d)
-		await get_tree().create_timer(0.1).timeout
-		if dialog_index == len(d2) - 1:
-			currently_speaking = false
+	# Input event handler, don't handle input unless it's a "select" input or
+	# Javi is currently speaking
+	if event.is_action_pressed("ui_select") and visible and !_currently_speaking and !_done_talking:
+		# Get some local variables
+		var _current_dialog = _dialog_list[_dialog_tree_index][_dialog_index]
+		var _current_dialog_tree = _dialog_list[_dialog_tree_index]
+
+		# Increment dialog 
+		if _dialog_index < len(_current_dialog_tree):
+			_dialog_index += 1
+
+		await _set_dialog(_current_dialog)
+
+		# If dialog has reached the end
+		if _dialog_index == len(_current_dialog_tree):
 			visible = false
-			willing_to_engage_in_speaking = false
-			dialog_index = 0
-			emit_signal("time_for_a_walk")
+			_willing_to_engage_in_speaking = false
+			_dialog_index = 0
+			if _dialog_tree_index == _intro_dialog_index:
+				emit_signal("time_for_a_walk")
+			if _dialog_tree_index == _instructional_dialog_index:
+				_done_talking = true
 		
-		if dialog_index < len(d2):
-			dialog_index += 1
 		
-
 func _on_area_2d_body_entered(body):
-	if "is_player" in body and body.is_player == true and willing_to_engage_in_speaking and !currently_speaking:
+	if "is_player" in body and body.is_player == true and _willing_to_engage_in_speaking and !visible:
 		visible = true
-		currently_speaking = true
-		await set_ticker_text(dialog_list[dialog_tree_index][dialog_index])
-		dialog_index += 1
-
-func set_ticker_text(text):
-	label.text = ""
-	for char in text:
-		# Append the character to the variable
-		label.text += char
-		await get_tree().create_timer(0.0007).timeout
+		await _set_dialog(_dialog_list[_dialog_tree_index][_dialog_index])
+		# The first dialog is automatic
+		_dialog_index += 1
 
 func _on_path_2d_all_done_walking():
-	dialog_index = 0
-	dialog_tree_index += 1
-	willing_to_engage_in_speaking = true
+	_dialog_index = 0
+	_dialog_tree_index += 1
+	_willing_to_engage_in_speaking = true
+
+func _set_dialog(text):
+	_currently_speaking = true
+	# Always reset text when calling ticker text
+	label.text = ""
+	for line in text:
+		label.text = ""
+		for char in line:
+			# Append the character to the variable
+			label.text += char
+			await get_tree().create_timer(_speaking_speed).timeout
+		await get_tree().create_timer(_speaking_pause).timeout
+
+	_currently_speaking = false 
 
