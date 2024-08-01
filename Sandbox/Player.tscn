@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dr3370ostip2o"]
+[gd_scene load_steps=42 format=3 uid="uid://cmhrcr8v7rkmj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_slhst"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_k5a1r"]
@@ -6,9 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://bpkgech86isub" path="res://clipboard.png" id="4_8n4xh"]
 [ext_resource type="Texture2D" uid="uid://bveaboh7ab1es" path="res://Button Itch Pack/Back/Back1.png" id="5_m2i8v"]
 [ext_resource type="Script" path="res://ProgressBar.gd" id="6_bklr5"]
-[ext_resource type="FontFile" uid="uid://cow8adf43n4sp" path="res://One Off Assets/PixeloidMono.ttf" id="6_eyrlg"]
-[ext_resource type="Texture2D" uid="uid://dl60uitm6muxa" path="res://One Off Assets/waterbottle.png" id="8_cs6yc"]
-[ext_resource type="Script" path="res://WaterProgress.gd" id="10_u7adn"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8kdr"]
 atlas = ExtResource("2_k5a1r")
@@ -282,8 +279,6 @@ radius = 10.2216
 height = 48.5441
 
 [sub_resource type="LabelSettings" id="LabelSettings_detl3"]
-font = ExtResource("6_eyrlg")
-font_size = 15
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_813x2"]
@@ -346,58 +341,32 @@ icon = ExtResource("5_m2i8v")
 flat = true
 
 [node name="FormsCompleted" type="Label" parent="Camera2D/Clipboard"]
-offset_left = -78.4566
-offset_top = -41.0168
-offset_right = 81.5434
-offset_bottom = -18.0168
+offset_left = -68.6306
+offset_top = -41.0758
+offset_right = 73.3694
+offset_bottom = -18.0758
 text = "Forms Completed:
 "
 label_settings = SubResource("LabelSettings_detl3")
 
 [node name="ProgressBar" type="ProgressBar" parent="Camera2D/Clipboard"]
 z_index = 2
-offset_left = -74.8905
-offset_top = 0.000813603
-offset_right = 75.1095
-offset_bottom = 27.0008
+offset_left = -71.5511
+offset_top = -1.86705
+offset_right = 78.4489
+offset_bottom = 25.1329
 max_value = 10.0
 script = ExtResource("6_bklr5")
 
-[node name="FormCompletedButton" type="Button" parent="Camera2D/Clipboard"]
+[node name="FormComletedButton" type="Button" parent="Camera2D/Clipboard"]
 offset_left = -78.4562
 offset_top = 45.1191
 offset_right = 75.5438
 offset_bottom = 76.1191
-theme = SubResource("Theme_813x2")
 text = "Complete Form
 "
 
-[node name="WaterBottle" type="Sprite2D" parent="Camera2D"]
-light_mask = 0
-visibility_layer = 2
-z_index = 300
-position = Vector2(395.722, 265.126)
-scale = Vector2(0.0650137, 0.0717146)
-texture = ExtResource("8_cs6yc")
-
-[node name="WaterProgress" type="ProgressBar" parent="Camera2D/WaterBottle"]
-light_mask = 0
-offset_left = -124.008
-offset_top = 382.19
-offset_right = 100.992
-offset_bottom = 432.19
-rotation = -1.56476
-scale = Vector2(2.53613, 5.60434)
-theme = SubResource("Theme_dj8g5")
-theme_override_styles/background = SubResource("StyleBoxEmpty_82kbo")
-theme_override_styles/fill = SubResource("StyleBoxFlat_svtpl")
-max_value = 10.0
-rounded = true
-show_percentage = false
-script = ExtResource("10_u7adn")
-
 [connection signal="pressed" from="Camera2D/Button" to="Camera2D" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera2D/Clipboard/CloseButton" to="Camera2D" method="_on_close_button_pressed"]
-[connection signal="pressed" from="Camera2D/Clipboard/FormCompletedButton" to="." method="_on_form_comleted_button_pressed"]
-[connection signal="pressed" from="Camera2D/Clipboard/FormCompletedButton" to="Camera2D/Clipboard/ProgressBar" method="_on_form_comleted_button_pressed"]
-[connection signal="pressed" from="Camera2D/Clipboard/FormCompletedButton" to="Camera2D/WaterBottle/WaterProgress" method="_on_form_completed_button_pressed"]
+[connection signal="pressed" from="Camera2D/Clipboard/FormComletedButton" to="." method="_on_form_comleted_button_pressed"]
+[connection signal="pressed" from="Camera2D/Clipboard/FormComletedButton" to="Camera2D/Clipboard/ProgressBar" method="_on_form_comleted_button_pressed"]
