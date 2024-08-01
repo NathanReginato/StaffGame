@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dr3370ostip2o"]
+[gd_scene load_steps=55 format=3 uid="uid://dr3370ostip2o"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_slhst"]
 [ext_resource type="Texture2D" uid="uid://dles2nscaedp4" path="res://Civilian2_Move.png" id="2_k5a1r"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Clipboard.gd" id="5_8rh04"]
 [ext_resource type="Texture2D" uid="uid://bveaboh7ab1es" path="res://Button Itch Pack/Back/Back1.png" id="5_m2i8v"]
 [ext_resource type="FontFile" uid="uid://cow8adf43n4sp" path="res://One Off Assets/PixeloidMono.ttf" id="6_eyrlg"]
+[ext_resource type="AudioStream" uid="uid://dimold5uppadl" path="res://Sounds/Walking_On_Grass_Slow.wav" id="7_8pcy3"]
 [ext_resource type="Texture2D" uid="uid://y78pitqbfy64" path="res://One Off Assets/icecream1.png" id="7_j0sx5"]
 [ext_resource type="Texture2D" uid="uid://dl60uitm6muxa" path="res://One Off Assets/waterbottle.png" id="8_cs6yc"]
 [ext_resource type="Texture2D" uid="uid://dp8tv567dkdvl" path="res://One Off Assets/icecream2.png" id="8_cwi7i"]
@@ -14,9 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c2h8pw67ilfs2" path="res://One Off Assets/icecream4.png" id="10_kdes1"]
 [ext_resource type="Script" path="res://WaterProgress.gd" id="10_u7adn"]
 [ext_resource type="Texture2D" uid="uid://c28m5xwodduol" path="res://One Off Assets/icecream5.png" id="11_jkptv"]
-[ext_resource type="Texture2D" uid="uid://c1liaqhpud8ad" path="res://One Off Assets/leaderboard.png" id="15_khu6b"]
-[ext_resource type="Script" path="res://ProgressBar.gd" id="6_bklr5"]
-[ext_resource type="AudioStream" uid="uid://dimold5uppadl" path="res://Sounds/Walking_On_Grass_Slow.wav" id="7_8pcy3"]
+[ext_resource type="Texture2D" uid="uid://ujywrlxp2mof" path="res://One Off Assets/image (1).png" id="16_wmhpi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8kdr"]
 atlas = ExtResource("2_k5a1r")
@@ -420,9 +419,9 @@ script = ExtResource("10_u7adn")
 [node name="Leaderboard" type="Sprite2D" parent="Camera2D"]
 visible = false
 z_index = 400
-position = Vector2(1.46023, -3.73415)
-scale = Vector2(0.697461, 0.966913)
-texture = ExtResource("15_khu6b")
+position = Vector2(2.92045, -1.86708)
+scale = Vector2(0.382966, 0.564076)
+texture = ExtResource("16_wmhpi")
 
 [connection signal="pressed" from="Camera2D/Button" to="Camera2D" method="_on_button_pressed"]
 [connection signal="pressed" from="Camera2D/Clipboard/CloseButton" to="Camera2D" method="_on_close_button_pressed"]
