@@ -1,6 +1,6 @@
 [gd_scene load_steps=94 format=3 uid="uid://okj2yik4pj41"]
 
-[ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="1_6wg58"]
+[ext_resource type="PackedScene" uid="uid://cmhrcr8v7rkmj" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="Texture2D" uid="uid://clpyvl81ogfad" path="res://Field Tileset/2 Objects/5 Grass/4.png" id="6_vevag"]
 [ext_resource type="Texture2D" uid="uid://ctpc76lbe0kpg" path="res://Field Tileset/2 Objects/5 Grass/5.png" id="7_wei42"]
 [ext_resource type="Texture2D" uid="uid://77xgrd6wr7pj" path="res://Field Tileset/2 Objects/5 Grass/6.png" id="8_8inkl"]
@@ -525,7 +525,7 @@ sources/0 = SubResource("TileSetAtlasSource_bm2i7")
 
 [sub_resource type="Curve2D" id="Curve2D_cv6kk"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -20, -4, 0, 0, 0, 0, -20, 78, 0, 0, 0, 0, 234, 140, 0, 0, 0, 0, 436, 145)
+"points": PackedVector2Array(0, 0, 0, 0, -20, -4, 0, 0, 0, 0, 0, 79, 0, 0, 0, 0, 234, 140, 0, 0, 0, 0, 424, 146)
 }
 point_count = 4
 
@@ -839,7 +839,7 @@ offset_bottom = 292.0
 text = "Change scene here"
 
 [node name="10" type="Sprite2D" parent="Static Assets/Starting Area"]
-z_index = 5
+z_index = 1
 position = Vector2(456, 62)
 texture = ExtResource("23_t82q7")
 
@@ -1111,7 +1111,7 @@ texture = ExtResource("34_su8kt")
 [node name="StaticBody2D" type="StaticBody2D" parent="Static Assets/Starting Area"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Static Assets/Starting Area/StaticBody2D"]
-polygon = PackedVector2Array(210, 202, 512, 324, 537, 346, 682, 409, 512, 359, 185, 232)
+polygon = PackedVector2Array(210, 202, 512, 324, 537, 346, 532, 358, 512, 359, 185, 232)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/Starting Area/StaticBody2D"]
 polygon = PackedVector2Array(685, 213, 638, 213, 618, 197, 614, 183, 584, 157, 559, 152, 510, 111, 506, 88, 491, 77, 466, 74, 450, 68, 455, 53, 458, 26, 682, 32)
@@ -1236,6 +1236,7 @@ script = ExtResource("42_k7hy0")
 [connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]
+[connection signal="all_done_walking" from="Path2D" to="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_path_2d_all_done_walking"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Doggy Javi/Area2D" to="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Doggy Javi/Area2D" to="Path2D/PathFollow2D/Doggy Javi/Woof" method="_on_area_2d_body_entered"]
 [connection signal="time_for_a_walk" from="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" to="Path2D" method="_on_sprite_2d_time_for_a_walk"]
