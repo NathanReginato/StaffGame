@@ -616,7 +616,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -633,7 +633,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tps17"]
@@ -1194,7 +1194,7 @@ rotation = -1.5708
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Doggy Javi"]
 position = Vector2(-0.462799, -8.26257)
 sprite_frames = SubResource("SpriteFrames_hiwbk")
-animation = &"walk_down"
+animation = &"walk_right"
 autoplay = "idle_left"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Doggy Javi"]
@@ -1224,6 +1224,7 @@ offset_bottom = 64.3468
 text = "Hello
 "
 label_settings = SubResource("LabelSettings_q3h6d")
+autowrap_mode = 2
 
 [node name="Woof" type="AudioStreamPlayer2D" parent="Path2D/PathFollow2D/Doggy Javi"]
 stream = ExtResource("41_i1uet")
