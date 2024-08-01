@@ -1,10 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://bil0n7w58nkos"]
+[gd_scene load_steps=31 format=3 uid="uid://bil0n7w58nkos"]
 
 [ext_resource type="Texture2D" uid="uid://cdtljdmq2x60r" path="res://One Off Assets/16x16.png" id="1_wq1qx"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="2_24c2g"]
 [ext_resource type="Texture2D" uid="uid://cxji70s343ld8" path="res://Field Tileset/2 Objects/5 Grass/2.png" id="3_4e8fo"]
 [ext_resource type="Texture2D" uid="uid://btbu267ahdpag" path="res://Field Tileset/2 Objects/5 Grass/3.png" id="4_ymtiv"]
+[ext_resource type="Texture2D" uid="uid://c01m5xiw6w5hx" path="res://One Off Assets/camp office.png" id="5_2t2oo"]
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="5_ckuo2"]
+[ext_resource type="Texture2D" uid="uid://3lyk6a3fb3ta" path="res://grizzled treant/GrizzledTreant.png" id="6_yryca"]
+[ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="8_eusx0"]
+[ext_resource type="Script" path="res://TreantDialog.gd" id="9_he4em"]
+[ext_resource type="FontFile" uid="uid://cow8adf43n4sp" path="res://One Off Assets/PixeloidMono.ttf" id="10_qvnen"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4l4s"]
 texture = ExtResource("1_wq1qx")
@@ -1918,10 +1923,10 @@ a = Vector2(-69, 68)
 b = Vector2(-70, 241)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ocbf"]
-size = Vector2(94, 15)
+size = Vector2(94, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ix0tv"]
-size = Vector2(105, 16.5)
+size = Vector2(105, 44.5)
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_nfn6n"]
 a = Vector2(318, 215)
@@ -1930,6 +1935,46 @@ b = Vector2(318, 48)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e41hv"]
 radius = 7.0
 height = 18.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pi4ao"]
+atlas = ExtResource("6_yryca")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mwnm"]
+atlas = ExtResource("6_yryca")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w2b62"]
+atlas = ExtResource("6_yryca")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6euxm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pi4ao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mwnm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w2b62")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0yyhn"]
+radius = 15.0
+height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dn7bo"]
+radius = 56.0357
+
+[sub_resource type="LabelSettings" id="LabelSettings_ebeot"]
+font = ExtResource("10_qvnen")
+font_color = Color(0.140447, 0.140447, 0.140447, 1)
 
 [node name="Office" type="Node2D"]
 
@@ -1953,6 +1998,7 @@ layer_0/tile_data = PackedInt32Array(524304, 1310720, 12, 589840, 1310720, 13, 6
 [node name="Static Assets" type="Node2D" parent="."]
 
 [node name="Sandbox" type="Area2D" parent="Static Assets"]
+position = Vector2(0, 26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/Sandbox"]
 position = Vector2(215, 257)
@@ -1967,13 +2013,13 @@ shape = SubResource("SegmentShape2D_fx5h5")
 [node name="FrontLeftWall" type="StaticBody2D" parent="Static Assets"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/FrontLeftWall"]
-position = Vector2(158, 225.5)
+position = Vector2(158, 239)
 shape = SubResource("RectangleShape2D_3ocbf")
 
 [node name="FrontRightWall" type="StaticBody2D" parent="Static Assets"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/FrontRightWall"]
-position = Vector2(277.5, 224.75)
+position = Vector2(277.5, 238.75)
 shape = SubResource("RectangleShape2D_ix0tv")
 
 [node name="RightWall" type="StaticBody2D" parent="Static Assets"]
@@ -2015,8 +2061,53 @@ texture = ExtResource("3_4e8fo")
 position = Vector2(295, 261)
 texture = ExtResource("4_ymtiv")
 
+[node name="OfficeSign" type="Sprite2D" parent="Static Assets"]
+visible = false
+position = Vector2(162, 255)
+scale = Vector2(0.0634434, 0.0625153)
+texture = ExtResource("5_2t2oo")
+
 [node name="Player" parent="." instance=ExtResource("5_ckuo2")]
 position = Vector2(-67, 91)
 up_direction = Vector2(0.707107, 0.707107)
 
+[node name="OfficeTreant" type="CharacterBody2D" parent="."]
+position = Vector2(79, 19)
+motion_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="OfficeTreant"]
+z_index = 100
+position = Vector2(144, 95)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_6euxm")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.754555
+speed_scale = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeTreant"]
+position = Vector2(144, 96)
+shape = SubResource("CapsuleShape2D_0yyhn")
+
+[node name="Area2D" type="Area2D" parent="OfficeTreant"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OfficeTreant/Area2D"]
+position = Vector2(137, 150)
+shape = SubResource("CircleShape2D_dn7bo")
+
+[node name="Sprite2D" type="Sprite2D" parent="OfficeTreant/Area2D"]
+position = Vector2(187, 55)
+scale = Vector2(0.271121, 0.271713)
+texture = ExtResource("8_eusx0")
+script = ExtResource("9_he4em")
+
+[node name="TreantText" type="Label" parent="OfficeTreant/Area2D/Sprite2D"]
+offset_left = -110.652
+offset_top = -22.0821
+offset_right = 139.348
+offset_bottom = 67.9179
+text = "test fonbt"
+label_settings = SubResource("LabelSettings_ebeot")
+
 [connection signal="body_entered" from="Static Assets/Sandbox" to="Player" method="_on_sandbox_body_entered"]
+[connection signal="body_entered" from="OfficeTreant/Area2D" to="OfficeTreant/Area2D/Sprite2D" method="_on_area_2d_body_entered"]

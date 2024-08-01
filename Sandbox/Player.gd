@@ -36,7 +36,7 @@ func _process(_delta):
 
 func _on_scene_2_body_entered(body):
 	if "is_player" in body and body.is_player == true:
-			get_tree().change_scene_to_file("res://scene_2.tscn")
+			get_tree().change_scene_to_file("res://Office.tscn")
 
 
 func _on_sandbox_body_entered(body):
