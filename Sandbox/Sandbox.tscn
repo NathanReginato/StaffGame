@@ -1,6 +1,7 @@
-[gd_scene load_steps=120 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=121 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="1_6wg58"]
+[ext_resource type="PackedScene" uid="uid://b0q2efr7idnu8" path="res://Coin.tscn" id="1_otcyi"]
 [ext_resource type="Texture2D" uid="uid://clpyvl81ogfad" path="res://Field Tileset/2 Objects/5 Grass/4.png" id="6_vevag"]
 [ext_resource type="Texture2D" uid="uid://ctpc76lbe0kpg" path="res://Field Tileset/2 Objects/5 Grass/5.png" id="7_wei42"]
 [ext_resource type="Texture2D" uid="uid://77xgrd6wr7pj" path="res://Field Tileset/2 Objects/5 Grass/6.png" id="8_8inkl"]
@@ -1029,6 +1030,10 @@ font_color = Color(0, 0, 0, 1)
 [node name="Game" type="Node2D"]
 position = Vector2(-28, -7)
 
+[node name="Coin" parent="." instance=ExtResource("1_otcyi")]
+z_index = 100
+position = Vector2(735, 158)
+
 [node name="Player" parent="." instance=ExtResource("1_6wg58")]
 position = Vector2(-137, -9)
 
@@ -1240,6 +1245,51 @@ texture = ExtResource("14_2vl1e")
 [node name="15" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
 position = Vector2(1, 192)
 texture = ExtResource("14_2vl1e")
+
+[node name="Tree12" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(57, -49)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree28" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(107, -42)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree29" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(154, -57)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree30" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(211, -55)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree31" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(250, -33)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree32" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(300, -14)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree33" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(353, -11)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree34" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(411, -7)
+texture = ExtResource("73_gsyr3")
+
+[node name="Tree35" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+z_index = 2
+position = Vector2(79, 77)
+texture = ExtResource("32_uni1t")
+
+[node name="66" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(79, 84)
+texture = ExtResource("86_rnyly")
+
+[node name="67" type="Sprite2D" parent="Static Assets/Starting Area/Trees"]
+position = Vector2(1212, 302)
+texture = ExtResource("51_iyvv6")
 
 [node name="CampFireObjectsSouth" type="StaticBody2D" parent="Static Assets/Starting Area"]
 metadata/_edit_group_ = true
@@ -1759,38 +1809,38 @@ sprite_frames = SubResource("SpriteFrames_ils8x")
 autoplay = "default"
 frame_progress = 0.816095
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="JaviDogPath" type="Path2D" parent="."]
 position = Vector2(266, 116)
 curve = SubResource("Curve2D_cv6kk")
 script = ExtResource("39_6pj52")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="JaviDogPath"]
 position = Vector2(-20, -4)
 rotation = 1.5708
 rotates = false
 loop = false
 
-[node name="Doggy Javi" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+[node name="Doggy Javi" type="CharacterBody2D" parent="JaviDogPath/PathFollow2D"]
 rotation = -1.5708
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="JaviDogPath/PathFollow2D/Doggy Javi"]
 position = Vector2(-0.462799, -8.26257)
 sprite_frames = SubResource("SpriteFrames_hiwbk")
 animation = &"walk_right"
 autoplay = "idle_left"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JaviDogPath/PathFollow2D/Doggy Javi"]
 position = Vector2(-0.462799, -0.262573)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tps17")
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+[node name="Area2D" type="Area2D" parent="JaviDogPath/PathFollow2D/Doggy Javi"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Doggy Javi/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JaviDogPath/PathFollow2D/Doggy Javi/Area2D"]
 position = Vector2(-0.462799, -0.262573)
 shape = SubResource("CircleShape2D_ps4um")
 
-[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Doggy Javi/Area2D"]
+[node name="Sprite2D" type="Sprite2D" parent="JaviDogPath/PathFollow2D/Doggy Javi/Area2D"]
 visible = false
 z_index = 500
 position = Vector2(-3.00001, -44)
@@ -1798,7 +1848,7 @@ scale = Vector2(0.385271, 0.397295)
 texture = ExtResource("25_b3jwq")
 script = ExtResource("40_0se2u")
 
-[node name="DoggyText" type="Label" parent="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D"]
+[node name="DoggyText" type="Label" parent="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D"]
 offset_left = -116.801
 offset_top = -22.6532
 offset_right = 138.199
@@ -1808,7 +1858,7 @@ text = "Hello
 label_settings = SubResource("LabelSettings_q3h6d")
 autowrap_mode = 2
 
-[node name="Woof" type="AudioStreamPlayer2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+[node name="Woof" type="AudioStreamPlayer2D" parent="JaviDogPath/PathFollow2D/Doggy Javi"]
 stream = ExtResource("41_i1uet")
 volume_db = -5.0
 autoplay = true
@@ -1816,61 +1866,17 @@ max_distance = 500.0
 attenuation = 4.75683
 script = ExtResource("42_k7hy0")
 
-[node name="Tree1" type="Sprite2D" parent="."]
-position = Vector2(88, -39)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree2" type="Sprite2D" parent="."]
-position = Vector2(138, -32)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree3" type="Sprite2D" parent="."]
-position = Vector2(185, -47)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree4" type="Sprite2D" parent="."]
-position = Vector2(242, -45)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree5" type="Sprite2D" parent="."]
-position = Vector2(281, -23)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree6" type="Sprite2D" parent="."]
-position = Vector2(331, -4)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree7" type="Sprite2D" parent="."]
-position = Vector2(384, -1)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree8" type="Sprite2D" parent="."]
-position = Vector2(442, 3)
-texture = ExtResource("73_gsyr3")
-
-[node name="Tree9" type="Sprite2D" parent="."]
-z_index = 2
-position = Vector2(110, 87)
-texture = ExtResource("32_uni1t")
-
-[node name="4" type="Sprite2D" parent="."]
-position = Vector2(110, 94)
-texture = ExtResource("86_rnyly")
-
-[node name="5" type="Sprite2D" parent="."]
-position = Vector2(1243, 312)
-texture = ExtResource("51_iyvv6")
-
 [node name="PaulStatue" type="Sprite2D" parent="."]
 position = Vector2(1142, 203)
 scale = Vector2(0.207594, 0.185091)
 texture = ExtResource("52_0euqo")
 
+[connection signal="new_coin" from="Coin" to="Player" method="_on_coin_new_coin"]
 [connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]
-[connection signal="all_done_walking" from="Path2D" to="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_path_2d_all_done_walking"]
-[connection signal="body_entered" from="Path2D/PathFollow2D/Doggy Javi/Area2D" to="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Path2D/PathFollow2D/Doggy Javi/Area2D" to="Path2D/PathFollow2D/Doggy Javi/Woof" method="_on_area_2d_body_entered"]
-[connection signal="open_clipboard" from="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" to="Player" method="_on_sprite_2d_open_clipboard"]
-[connection signal="time_for_a_walk" from="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" to="Path2D" method="_on_sprite_2d_time_for_a_walk"]
+[connection signal="all_done_walking" from="JaviDogPath" to="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_path_2d_all_done_walking"]
+[connection signal="body_entered" from="JaviDogPath/PathFollow2D/Doggy Javi/Area2D" to="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="JaviDogPath/PathFollow2D/Doggy Javi/Area2D" to="JaviDogPath/PathFollow2D/Doggy Javi/Woof" method="_on_area_2d_body_entered"]
+[connection signal="open_clipboard" from="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D" to="Player" method="_on_sprite_2d_open_clipboard"]
+[connection signal="time_for_a_walk" from="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D" to="JaviDogPath" method="_on_sprite_2d_time_for_a_walk"]

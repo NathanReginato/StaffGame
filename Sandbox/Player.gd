@@ -1,5 +1,5 @@
 extends CharacterBody2D
-@export var speed = 400
+@export var speed = 200
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var leaderboard = $Camera2D/Leaderboard
 @onready var points_text : Label = $AnimatedSprite2D/Points

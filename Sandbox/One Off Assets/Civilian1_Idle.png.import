@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://iuectun2r48p"
-path="res://.godot/imported/Hair7.png-795d6815f86b86b26e44e9799ceb05aa.ctex"
+uid="uid://6okmkfwdbdui"
+path="res://.godot/imported/Civilian1_Idle.png-26c0e8bed7fffb1a0bf308399e6dd39f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Player Tileset/Hair/Hair7.png"
-dest_files=["res://.godot/imported/Hair7.png-795d6815f86b86b26e44e9799ceb05aa.ctex"]
+source_file="res://One Off Assets/Civilian1_Idle.png"
+dest_files=["res://.godot/imported/Civilian1_Idle.png-26c0e8bed7fffb1a0bf308399e6dd39f.ctex"]
 
 [params]
 
