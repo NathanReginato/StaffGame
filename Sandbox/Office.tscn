@@ -2107,6 +2107,7 @@ offset_right = 139.348
 offset_bottom = 67.9179
 text = "test fonbt"
 label_settings = SubResource("LabelSettings_ebeot")
+autowrap_mode = 3
 
 [connection signal="body_entered" from="Static Assets/Sandbox" to="Player" method="_on_sandbox_body_entered"]
 [connection signal="body_entered" from="OfficeTreant/Area2D" to="OfficeTreant/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
