@@ -1,10 +1,13 @@
-[gd_scene load_steps=19 format=3 uid="uid://ckos1puhxvs2q"]
+[gd_scene load_steps=23 format=3 uid="uid://ckos1puhxvs2q"]
 
 [ext_resource type="Texture2D" uid="uid://cdtljdmq2x60r" path="res://One Off Assets/16x16.png" id="1_as1nn"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="1_lsitf"]
-[ext_resource type="PackedScene" uid="uid://cmhrcr8v7rkmj" path="res://Player.tscn" id="4_bqghp"]
+[ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="4_bqghp"]
 [ext_resource type="Texture2D" uid="uid://cxji70s343ld8" path="res://Field Tileset/2 Objects/5 Grass/2.png" id="4_ldcfi"]
 [ext_resource type="Texture2D" uid="uid://btbu267ahdpag" path="res://Field Tileset/2 Objects/5 Grass/3.png" id="5_oi8oe"]
+[ext_resource type="Script" path="res://Coin.gd" id="6_4gufv"]
+[ext_resource type="Texture2D" uid="uid://b1qe8ks65nr64" path="res://One Off Assets/Props.png" id="6_fteoa"]
+[ext_resource type="AudioStream" uid="uid://c2wdbt86qjhwv" path="res://Sounds/coin.wav" id="8_yt15w"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4l4s"]
 texture = ExtResource("1_as1nn")
@@ -1931,6 +1934,8 @@ b = Vector2(318, 48)
 radius = 7.0
 height = 18.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_tsxsr"]
+
 [node name="Scene2" type="Node2D"]
 
 [node name="Background" type="TileMap" parent="."]
@@ -2004,7 +2009,7 @@ polygon = PackedVector2Array(257, 140, 257, 184, 284, 184, 286, 172, 301, 171, 3
 [node name="Stool" type="StaticBody2D" parent="Static Assets"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Static Assets/Stool"]
-position = Vector2(199, 126)
+position = Vector2(200, 126)
 shape = SubResource("CapsuleShape2D_e41hv")
 
 [node name="2" type="Sprite2D" parent="Static Assets"]
@@ -2018,4 +2023,20 @@ texture = ExtResource("5_oi8oe")
 [node name="Player" parent="." instance=ExtResource("4_bqghp")]
 position = Vector2(-67, 91)
 
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(214, 180)
+script = ExtResource("6_4gufv")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin"]
+texture = ExtResource("6_fteoa")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("CircleShape2D_tsxsr")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Coin"]
+stream = ExtResource("8_yt15w")
+
 [connection signal="body_entered" from="Static Assets/Sandbox" to="Player" method="_on_sandbox_body_entered"]
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
+[connection signal="new_coin" from="Coin" to="Player" method="_on_coin_new_coin"]

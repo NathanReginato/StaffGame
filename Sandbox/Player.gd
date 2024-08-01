@@ -2,10 +2,11 @@ extends CharacterBody2D
 @export var speed = 400
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var leaderboard = $Camera2D/Leaderboard
-
+@onready var points_text : Label = $AnimatedSprite2D/Points
 @onready var _walking_sound : AudioStreamPlayer2D = $AnimatedSprite2D/AudioStreamPlayer2D
 var is_player = true
 var forms_count = 0
+var points = 0
 
 func get_input():
 	var input_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -62,3 +63,14 @@ func _input(event):
 	elif event.is_action_pressed("leaderboard") and leaderboard.visible == true:
 		leaderboard.visible = false
 		#print("close leaderboard")
+
+
+func _on_sprite_2d_open_clipboard():
+	$Camera2D/Clipboard.visible = true
+	$Camera2D/Button.visible = false 
+	
+
+func _on_coin_new_coin():
+	points += 10
+	points_text.show()
+	

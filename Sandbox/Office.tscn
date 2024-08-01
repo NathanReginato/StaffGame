@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bil0n7w58nkos"]
+[gd_scene load_steps=35 format=3 uid="uid://bil0n7w58nkos"]
 
 [ext_resource type="Texture2D" uid="uid://cdtljdmq2x60r" path="res://One Off Assets/16x16.png" id="1_wq1qx"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="2_24c2g"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="8_eusx0"]
 [ext_resource type="Script" path="res://TreantDialog.gd" id="9_he4em"]
 [ext_resource type="FontFile" uid="uid://cow8adf43n4sp" path="res://One Off Assets/PixeloidMono.ttf" id="10_qvnen"]
+[ext_resource type="Script" path="res://Coin.gd" id="11_43gcw"]
+[ext_resource type="Texture2D" uid="uid://b1qe8ks65nr64" path="res://One Off Assets/Props.png" id="12_xmia8"]
+[ext_resource type="AudioStream" uid="uid://c2wdbt86qjhwv" path="res://Sounds/coin.wav" id="13_kbpn3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4l4s"]
 texture = ExtResource("1_wq1qx")
@@ -1976,6 +1979,8 @@ radius = 56.0357
 font = ExtResource("10_qvnen")
 font_color = Color(0.140447, 0.140447, 0.140447, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8j7mg"]
+
 [node name="Office" type="Node2D"]
 
 [node name="Background" type="TileMap" parent="."]
@@ -2106,5 +2111,20 @@ offset_bottom = 67.9179
 label_settings = SubResource("LabelSettings_ebeot")
 autowrap_mode = 3
 
+[node name="Coin" type="Area2D" parent="."]
+position = Vector2(214, 180)
+script = ExtResource("11_43gcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Coin"]
+texture = ExtResource("12_xmia8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin"]
+shape = SubResource("CircleShape2D_8j7mg")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Coin"]
+stream = ExtResource("13_kbpn3")
+
 [connection signal="body_entered" from="Static Assets/Sandbox" to="Player" method="_on_sandbox_body_entered"]
 [connection signal="body_entered" from="OfficeTreant/Area2D" to="OfficeTreant/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Coin" to="Coin" method="_on_body_entered"]
+[connection signal="new_coin" from="Coin" to="Player" method="_on_coin_new_coin"]

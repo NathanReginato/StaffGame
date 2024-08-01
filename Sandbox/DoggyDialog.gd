@@ -2,10 +2,11 @@ extends Sprite2D
 # All of the text to scroll
 @onready var label = $DoggyText
 signal time_for_a_walk
+signal open_clipboard
 
 var _dialog_list = [
 	[
-		["Hello! You must be Dan."],
+		["Hello, You must be Dan."],
 		["My name is Javi."],
 		["Welcome to Camp. I guess I'll show you around."]
 	],
@@ -14,7 +15,7 @@ var _dialog_list = [
 		["Where's your ice cream sandwich key? ...", "You don't have any??"],
 		["There's only one way at camp to get", "ice cream sandwiches and it's...", "by bringing me Diet Coke", "........", "Or", "Filling out your onboarding forms !!!!"],
 		["Have you filled out any forms yet?", "Let's check your status bar."],
-		["Crikey, your clipboard is empty!",  "You haven't filled out any forms.", "Please go to your Campanion App",  "and come back when you've got one done."]
+		["Crikey, your clipboard is empty!", "<clipboard>" ,"You haven't filled out any forms.", "Please go to your Campanion App",  "and come back when you've got one done."]
 	]
 ]
 var _intro_dialog_index = 0
@@ -41,6 +42,8 @@ func _input(event):
 		if _dialog_index < len(_current_dialog_tree):
 			_dialog_index += 1
 
+		
+			
 		await _set_dialog(_current_dialog)
 
 		# If dialog has reached the end
@@ -71,6 +74,9 @@ func _set_dialog(text):
 	# Always reset text when calling ticker text
 	label.text = ""
 	for line in text:
+		if line == "<clipboard>":
+			open_clipboard.emit()
+			break
 		label.text = ""
 		for char in line:
 			# Append the character to the variable

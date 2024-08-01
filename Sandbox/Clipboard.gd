@@ -19,7 +19,7 @@ func _process(delta):
 
 
 func _on_form_completed_button_pressed():
-	
+	$AudioStreamPlayer2D.play()
 	if progress.value <= progress.max_value and icecream1.visible == false:
 		icecream1.visible = true
 	elif progress.value <= progress.max_value and icecream2.visible == false:
