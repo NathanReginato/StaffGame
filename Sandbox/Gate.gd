@@ -10,6 +10,7 @@ func _on_body_entered(body):
 		if _gate_open == false: 
 			get_node("GateInfo").visible = true
 			if body.forms_count > 0:
+				get_node("AudioStreamPlayer2D").play()
 				get_node("Gate/AnimatedSprite2D").play("gate_open")
 				get_node("Gate/GateBarrier").set_deferred("disabled", true)
 				_gate_open = true

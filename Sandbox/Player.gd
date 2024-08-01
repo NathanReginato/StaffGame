@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var _animated_sprite = $AnimatedSprite2D
 @onready var leaderboard = $Camera2D/Leaderboard
 
+@onready var _walking_sound : AudioStreamPlayer2D = $AnimatedSprite2D/AudioStreamPlayer2D
 var is_player = true
 var forms_count = 0
 
@@ -33,8 +34,12 @@ func _process(_delta):
 		_animated_sprite.play("WalkSouth")
 	else:
 		_animated_sprite.stop()
-		
 
+	if Input.is_action_pressed("ui_up") || Input.is_action_pressed("ui_down") || Input.is_action_pressed("ui_left") || Input.is_action_pressed("ui_right"):
+		if !_walking_sound.playing:
+			_walking_sound.play()
+	elif _walking_sound.playing:
+		_walking_sound.stop()
 
 func _on_scene_2_body_entered(body):
 	if "is_player" in body and body.is_player == true:

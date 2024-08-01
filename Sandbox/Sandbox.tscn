@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=96 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="Texture2D" uid="uid://clpyvl81ogfad" path="res://Field Tileset/2 Objects/5 Grass/4.png" id="6_vevag"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://4plsjkxenc5j" path="res://Village Tileset/1.1 Tiles/Tileset2.png" id="20_6hawp"]
 [ext_resource type="Script" path="res://Gate.gd" id="20_8bf70"]
 [ext_resource type="Texture2D" uid="uid://dliy1elthu5r" path="res://Village Tileset/3 Animated Objects/DoubleDoor2.png" id="20_alu50"]
+[ext_resource type="AudioStream" uid="uid://dsxyjqbq22kdg" path="res://Sounds/campfire.mp3" id="20_o4vgl"]
 [ext_resource type="Texture2D" uid="uid://b6ejt8iw7xx4w" path="res://Field Tileset/2 Objects/2 Fence/4.png" id="23_t82q7"]
 [ext_resource type="Texture2D" uid="uid://dh6fcagt656in" path="res://Field Tileset/2 Objects/2 Fence/3.png" id="24_kh2am"]
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="25_b3jwq"]
@@ -21,11 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://dgd4n18qscb7q" path="res://Field Tileset/2 Objects/7 Decor/Tree2.png" id="32_uni1t"]
 [ext_resource type="Texture2D" uid="uid://dek4e8qvrj4bb" path="res://Field Tileset/2 Objects/1 Shadow/5.png" id="33_8grtd"]
 [ext_resource type="Texture2D" uid="uid://cbw53iwlksncs" path="res://Field Tileset/2 Objects/2 Fence/1.png" id="34_su8kt"]
+[ext_resource type="AudioStream" uid="uid://yf6g5earl2qc" path="res://Sounds/closing_door.wav" id="38_u2atq"]
 [ext_resource type="Script" path="res://DogWalk.gd" id="39_6pj52"]
-[ext_resource type="Texture2D" uid="uid://ciai28j00aqyn" path="res://Topdown - Pet - Dog/Root_Idle.png" id="39_syl64"]
+[ext_resource type="Texture2D" uid="uid://ciai28j00aqyn" path="res://Dog/Root_Idle.png" id="39_syl64"]
 [ext_resource type="Script" path="res://DoggyDialog.gd" id="40_0se2u"]
 [ext_resource type="AudioStream" uid="uid://dmgg4mxndcv3h" path="res://Sounds/Audio-Clip-_2024-07-31_14-11-15-022_.mp3" id="41_i1uet"]
-[ext_resource type="Texture2D" uid="uid://cyd356im04tk8" path="res://Topdown - Pet - Dog/Root_Walk.png" id="41_xva8k"]
+[ext_resource type="Texture2D" uid="uid://cyd356im04tk8" path="res://Dog/Root_Walk.png" id="41_xva8k"]
 [ext_resource type="Script" path="res://Woof.gd" id="42_k7hy0"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="65_4sg5m"]
 [ext_resource type="Texture2D" uid="uid://bilo5448unwv1" path="res://Field Tileset/3 Animated Objects/2 Campfire/2.png" id="72_t0ueo"]
@@ -804,6 +806,11 @@ position = Vector2(-3.80167, 9.23435)
 scale = Vector2(0.380167, 0.419743)
 texture = ExtResource("73_8x6uv")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Static Assets/Starting Area/Fire"]
+stream = ExtResource("20_o4vgl")
+autoplay = true
+attenuation = 4.92458
+
 [node name="Tent" type="StaticBody2D" parent="Static Assets/Starting Area"]
 position = Vector2(404, 131)
 scale = Vector2(2.63042, 2.38241)
@@ -1161,6 +1168,9 @@ to open the gate!"
 label_settings = SubResource("LabelSettings_rarfx")
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Static Assets/GateArea/Gate"]
+stream = ExtResource("38_u2atq")
 
 [node name="Walls" type="StaticBody2D" parent="Static Assets/GateArea"]
 
