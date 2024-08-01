@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=94 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="PackedScene" uid="uid://cmhrcr8v7rkmj" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="Texture2D" uid="uid://clpyvl81ogfad" path="res://Field Tileset/2 Objects/5 Grass/4.png" id="6_vevag"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="25_b3jwq"]
 [ext_resource type="Texture2D" uid="uid://dp6xeylfgurtl" path="res://Field Tileset/2 Objects/2 Fence/7.png" id="25_o5cc2"]
 [ext_resource type="Texture2D" uid="uid://dwquffjdqi2cp" path="res://Field Tileset/2 Objects/2 Fence/8.png" id="25_qnud5"]
-[ext_resource type="Texture2D" uid="uid://ds3yfq2ty1qeo" path="res://One Off Assets/resultmesshall.png" id="26_5qslv"]
 [ext_resource type="Texture2D" uid="uid://chp0o4jc8gf5k" path="res://Field Tileset/2 Objects/9 Bush/6.png" id="26_iwu0m"]
 [ext_resource type="Texture2D" uid="uid://be0ibuga328rj" path="res://Field Tileset/2 Objects/9 Bush/5.png" id="27_wi0if"]
 [ext_resource type="Texture2D" uid="uid://bn3mrscfitm40" path="res://Field Tileset/2 Objects/9 Bush/4.png" id="28_axu1a"]
@@ -22,6 +21,12 @@
 [ext_resource type="Texture2D" uid="uid://dgd4n18qscb7q" path="res://Field Tileset/2 Objects/7 Decor/Tree2.png" id="32_uni1t"]
 [ext_resource type="Texture2D" uid="uid://dek4e8qvrj4bb" path="res://Field Tileset/2 Objects/1 Shadow/5.png" id="33_8grtd"]
 [ext_resource type="Texture2D" uid="uid://cbw53iwlksncs" path="res://Field Tileset/2 Objects/2 Fence/1.png" id="34_su8kt"]
+[ext_resource type="Script" path="res://DogWalk.gd" id="39_6pj52"]
+[ext_resource type="Texture2D" uid="uid://ciai28j00aqyn" path="res://Topdown - Pet - Dog/Root_Idle.png" id="39_syl64"]
+[ext_resource type="Script" path="res://DoggyDialog.gd" id="40_0se2u"]
+[ext_resource type="AudioStream" uid="uid://dmgg4mxndcv3h" path="res://Sounds/Audio-Clip-_2024-07-31_14-11-15-022_.mp3" id="41_i1uet"]
+[ext_resource type="Texture2D" uid="uid://cyd356im04tk8" path="res://Topdown - Pet - Dog/Root_Walk.png" id="41_xva8k"]
+[ext_resource type="Script" path="res://Woof.gd" id="42_k7hy0"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="65_4sg5m"]
 [ext_resource type="Texture2D" uid="uid://bilo5448unwv1" path="res://Field Tileset/3 Animated Objects/2 Campfire/2.png" id="72_t0ueo"]
 [ext_resource type="Texture2D" uid="uid://bk5c0k21rpixs" path="res://Field Tileset/2 Objects/1 Shadow/3.png" id="73_8x6uv"]
@@ -518,11 +523,139 @@ texture_region_size = Vector2i(16, 64)
 [sub_resource type="TileSet" id="TileSet_hyn4m"]
 sources/0 = SubResource("TileSetAtlasSource_bm2i7")
 
+[sub_resource type="Curve2D" id="Curve2D_cv6kk"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -20, -4, 0, 0, 0, 0, -20, 78, 0, 0, 0, 0, 234, 140, 0, 0, 0, 0, 436, 145)
+}
+point_count = 4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7b2i"]
+atlas = ExtResource("39_syl64")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6d35"]
+atlas = ExtResource("39_syl64")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8lup"]
+atlas = ExtResource("39_syl64")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc2r5"]
+atlas = ExtResource("39_syl64")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sp5em"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_johdo"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgwdg"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gb0h"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ext1k"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj5fj"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26fgl"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4ks2"]
+atlas = ExtResource("41_xva8k")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hiwbk"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7b2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6d35")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8lup")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc2r5")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sp5em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_johdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgwdg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gb0h")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ext1k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj5fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_26fgl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4ks2")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tps17"]
+radius = 9.0
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ps4um"]
+radius = 38.1182
+
+[sub_resource type="SystemFont" id="SystemFont_svdjq"]
+font_names = PackedStringArray("Pixeloid Mono")
+
+[sub_resource type="LabelSettings" id="LabelSettings_q3h6d"]
+font = SubResource("SystemFont_svdjq")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
 [node name="Game" type="Node2D"]
 position = Vector2(-28, -7)
 
 [node name="Player" parent="." instance=ExtResource("1_6wg58")]
-up_direction = Vector2(0.707107, 0.707107)
+position = Vector2(-137, -9)
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -875,7 +1008,7 @@ position = Vector2(439, 257)
 texture = ExtResource("80_k7okp")
 
 [node name="42" type="Sprite2D" parent="Static Assets/Starting Area"]
-position = Vector2(262, 184)
+position = Vector2(311, 200)
 texture = ExtResource("81_i7wpc")
 
 [node name="43" type="Sprite2D" parent="Static Assets/Starting Area"]
@@ -978,10 +1111,10 @@ texture = ExtResource("34_su8kt")
 [node name="StaticBody2D" type="StaticBody2D" parent="Static Assets/Starting Area"]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Static Assets/Starting Area/StaticBody2D"]
-polygon = PackedVector2Array(219, 187, 517, 317, 558, 347, 682, 409, 500, 364, 177, 242)
+polygon = PackedVector2Array(210, 202, 512, 324, 537, 346, 682, 409, 512, 359, 185, 232)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/Starting Area/StaticBody2D"]
-polygon = PackedVector2Array(678, 218, 638, 213, 618, 197, 614, 183, 584, 157, 559, 152, 510, 111, 506, 88, 491, 77, 466, 74, 450, 68, 455, 53, 458, 26, 682, 32)
+polygon = PackedVector2Array(685, 213, 638, 213, 618, 197, 614, 183, 584, 157, 559, 152, 510, 111, 506, 88, 491, 77, 466, 74, 450, 68, 455, 53, 458, 26, 682, 32)
 
 [node name="GateArea" type="Node2D" parent="Static Assets"]
 position = Vector2(620, 182)
@@ -1044,36 +1177,65 @@ polygon = PackedVector2Array(66, 5, 66, 60, 77, 60, 78, 23, 179, 23, 179, 6)
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Static Assets/GateArea/Walls"]
 polygon = PackedVector2Array(68, 140, 76, 140, 78, 189, 178, 189, 178, 235, 66, 235)
 
-[node name="MessHall" type="Node2D" parent="Static Assets/GateArea"]
-position = Vector2(-18, -16)
-metadata/_edit_group_ = true
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(266, 116)
+curve = SubResource("Curve2D_cv6kk")
+script = ExtResource("39_6pj52")
 
-[node name="6" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
-position = Vector2(-93, -52)
-texture = ExtResource("85_5bxpn")
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-20, -4)
+rotation = 1.5708
+rotates = false
+loop = false
 
-[node name="7" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
-position = Vector2(-55, -28)
-texture = ExtResource("85_5bxpn")
+[node name="Doggy Javi" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+rotation = -1.5708
 
-[node name="8" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
-position = Vector2(-9, -20)
-texture = ExtResource("85_5bxpn")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+position = Vector2(-0.462799, -8.26257)
+sprite_frames = SubResource("SpriteFrames_hiwbk")
+animation = &"walk_down"
+autoplay = "idle_left"
 
-[node name="9" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
-position = Vector2(23.0001, -37)
-texture = ExtResource("85_5bxpn")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+position = Vector2(-0.462799, -0.262573)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_tps17")
 
-[node name="10" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
-position = Vector2(51, -55)
-texture = ExtResource("85_5bxpn")
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Doggy Javi"]
 
-[node name="Sprite2D" type="Sprite2D" parent="Static Assets/GateArea/MessHall"]
-z_index = 10
-position = Vector2(-15, -94)
-scale = Vector2(0.345833, 0.320139)
-texture = ExtResource("26_5qslv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Doggy Javi/Area2D"]
+position = Vector2(-0.462799, -0.262573)
+shape = SubResource("CircleShape2D_ps4um")
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D/Doggy Javi/Area2D"]
+visible = false
+z_index = 500
+position = Vector2(-3.00001, -44)
+scale = Vector2(0.385271, 0.397295)
+texture = ExtResource("25_b3jwq")
+script = ExtResource("40_0se2u")
+
+[node name="DoggyText" type="Label" parent="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D"]
+offset_left = -116.801
+offset_top = -22.6532
+offset_right = 138.199
+offset_bottom = 64.3468
+text = "Hello
+"
+label_settings = SubResource("LabelSettings_q3h6d")
+
+[node name="Woof" type="AudioStreamPlayer2D" parent="Path2D/PathFollow2D/Doggy Javi"]
+stream = ExtResource("41_i1uet")
+volume_db = -5.0
+autoplay = true
+max_distance = 500.0
+attenuation = 4.75683
+script = ExtResource("42_k7hy0")
 
 [connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/Doggy Javi/Area2D" to="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Path2D/PathFollow2D/Doggy Javi/Area2D" to="Path2D/PathFollow2D/Doggy Javi/Woof" method="_on_area_2d_body_entered"]
+[connection signal="time_for_a_walk" from="Path2D/PathFollow2D/Doggy Javi/Area2D/Sprite2D" to="Path2D" method="_on_sprite_2d_time_for_a_walk"]
