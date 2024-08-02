@@ -17,7 +17,7 @@
 [ext_resource type="Script" path="res://WaterProgress.gd" id="10_u7adn"]
 [ext_resource type="Texture2D" uid="uid://c28m5xwodduol" path="res://One Off Assets/icecream5.png" id="11_jkptv"]
 [ext_resource type="AudioStream" uid="uid://bidbsm6jq3fm3" path="res://Sounds/Level Up (miniclip).wav" id="15_kjrc1"]
-[ext_resource type="Texture2D" uid="uid://ujywrlxp2mof" path="res://One Off Assets/image (1).png" id="16_wmhpi"]
+[ext_resource type="Texture2D" uid="uid://detplkii51rqs" path="res://leaderboard2.png" id="18_xhi6k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nihc"]
 atlas = ExtResource("2_bjlfw")
@@ -447,8 +447,8 @@ script = ExtResource("10_u7adn")
 visible = false
 z_index = 400
 position = Vector2(2.92045, -1.86708)
-scale = Vector2(0.382966, 0.564076)
-texture = ExtResource("16_wmhpi")
+scale = Vector2(0.356554, 0.549531)
+texture = ExtResource("18_xhi6k")
 
 [connection signal="draw" from="AnimatedSprite2D/Points" to="AnimatedSprite2D/Points" method="_on_draw"]
 [connection signal="visibility_changed" from="AnimatedSprite2D/Points" to="AnimatedSprite2D/Points" method="_on_visibility_changed"]

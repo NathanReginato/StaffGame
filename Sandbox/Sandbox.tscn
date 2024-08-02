@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=128 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="PackedScene" uid="uid://b0q2efr7idnu8" path="res://Coin.tscn" id="1_otcyi"]
@@ -26,7 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dgd4n18qscb7q" path="res://Field Tileset/2 Objects/7 Decor/Tree2.png" id="32_uni1t"]
 [ext_resource type="Texture2D" uid="uid://dek4e8qvrj4bb" path="res://Field Tileset/2 Objects/1 Shadow/5.png" id="33_8grtd"]
 [ext_resource type="Texture2D" uid="uid://cbw53iwlksncs" path="res://Field Tileset/2 Objects/2 Fence/1.png" id="34_su8kt"]
-[ext_resource type="Texture2D" uid="uid://ds3yfq2ty1qeo" path="res://One Off Assets/resultmesshall.png" id="38_eih1x"]
+[ext_resource type="Texture2D" uid="uid://dyrkmnfa8bcl" path="res://One Off Assets/resultmesshall.png" id="38_eih1x"]
 [ext_resource type="AudioStream" uid="uid://yf6g5earl2qc" path="res://Sounds/closing_door.wav" id="38_u2atq"]
 [ext_resource type="Script" path="res://DogWalk.gd" id="39_6pj52"]
 [ext_resource type="Texture2D" uid="uid://ciai28j00aqyn" path="res://Dog/Root_Idle.png" id="39_syl64"]
@@ -37,7 +37,11 @@
 [ext_resource type="Texture2D" uid="uid://c01m5xiw6w5hx" path="res://One Off Assets/camp office.png" id="44_84unt"]
 [ext_resource type="Texture2D" uid="uid://dtme7g47861mg" path="res://River Tileset/4 Effects/Wave2.png" id="45_ni70c"]
 [ext_resource type="Texture2D" uid="uid://crexbysn2niml" path="res://River Tileset/4 Effects/Splash2.png" id="46_rikan"]
+[ext_resource type="Script" path="res://Welcome.gd" id="49_6s4ci"]
+[ext_resource type="FontFile" uid="uid://cow8adf43n4sp" path="res://One Off Assets/PixeloidMono.ttf" id="49_jngux"]
+[ext_resource type="Texture2D" uid="uid://c3vhhgvedf2tw" path="res://icon.svg" id="50_a3jf7"]
 [ext_resource type="Texture2D" uid="uid://bffxlqmbtvmjr" path="res://Village Tileset/2 Objects/7 House/4.png" id="51_iyvv6"]
+[ext_resource type="Texture2D" uid="uid://bre04bv3gk5ey" path="res://image (41).png" id="51_y178y"]
 [ext_resource type="Texture2D" uid="uid://dfirte7lhsxlc" path="res://One Off Assets/Paul Statue.png" id="52_0euqo"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="65_4sg5m"]
 [ext_resource type="Texture2D" uid="uid://bilo5448unwv1" path="res://Field Tileset/3 Animated Objects/2 Campfire/2.png" id="72_t0ueo"]
@@ -899,6 +903,22 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nskl8"]
+bg_color = Color(0.0383972, 0.0383972, 0.0383971, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_i75vb"]
+font = ExtResource("49_jngux")
+font_size = 20
+font_color = Color(0.580392, 0.788235, 0.380392, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hu7c4"]
+font = ExtResource("49_jngux")
+font_color = Color(0.580392, 0.788235, 0.380392, 1)
+
 [sub_resource type="Curve2D" id="Curve2D_cv6kk"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -20, -4, 0, 0, 0, 0, 0, 79, 0, 0, 0, 0, 234, 140, 0, 0, 0, 0, 424, 146)
@@ -1036,6 +1056,7 @@ position = Vector2(735, 158)
 
 [node name="Player" parent="." instance=ExtResource("1_6wg58")]
 position = Vector2(-137, -9)
+up_direction = Vector2(0.707107, 0.707107)
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -1809,6 +1830,50 @@ sprite_frames = SubResource("SpriteFrames_ils8x")
 autoplay = "default"
 frame_progress = 0.816095
 
+[node name="Welcome" type="Panel" parent="Static Assets"]
+z_index = 10
+offset_left = -139.0
+offset_top = -27.0
+offset_right = 374.0
+offset_bottom = 242.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nskl8")
+script = ExtResource("49_6s4ci")
+
+[node name="Game of Camp" type="Label" parent="Static Assets/Welcome"]
+layout_mode = 0
+offset_left = 154.0
+offset_top = 85.0
+offset_right = 368.0
+offset_bottom = 138.0
+text = "The Game of Camp"
+label_settings = SubResource("LabelSettings_i75vb")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_group_ = true
+
+[node name="\'Minder Edition" type="Label" parent="Static Assets/Welcome"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 134.0
+offset_right = 341.0
+offset_bottom = 157.0
+text = "'Minder Edition"
+label_settings = SubResource("LabelSettings_hu7c4")
+metadata/_edit_group_ = true
+
+[node name="Logo" type="Sprite2D" parent="Static Assets/Welcome"]
+position = Vector2(260, 53)
+texture = ExtResource("50_a3jf7")
+
+[node name="Button" type="Button" parent="Static Assets/Welcome"]
+layout_mode = 0
+offset_left = 182.0
+offset_top = 174.0
+offset_right = 1104.0
+offset_bottom = 526.0
+scale = Vector2(0.171117, 0.188897)
+icon = ExtResource("51_y178y")
+
 [node name="JaviDogPath" type="Path2D" parent="."]
 position = Vector2(266, 116)
 curve = SubResource("Curve2D_cv6kk")
@@ -1875,6 +1940,7 @@ texture = ExtResource("52_0euqo")
 [connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]
 [connection signal="body_entered" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_entered"]
 [connection signal="body_exited" from="Static Assets/GateArea/Gate" to="Static Assets/GateArea/Gate" method="_on_body_exited"]
+[connection signal="pressed" from="Static Assets/Welcome/Button" to="Static Assets/Welcome" method="_on_button_pressed"]
 [connection signal="all_done_walking" from="JaviDogPath" to="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_path_2d_all_done_walking"]
 [connection signal="body_entered" from="JaviDogPath/PathFollow2D/Doggy Javi/Area2D" to="JaviDogPath/PathFollow2D/Doggy Javi/Area2D/Sprite2D" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="JaviDogPath/PathFollow2D/Doggy Javi/Area2D" to="JaviDogPath/PathFollow2D/Doggy Javi/Woof" method="_on_area_2d_body_entered"]
