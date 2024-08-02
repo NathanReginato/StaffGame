@@ -1,4 +1,4 @@
-[gd_scene load_steps=128 format=3 uid="uid://okj2yik4pj41"]
+[gd_scene load_steps=129 format=3 uid="uid://okj2yik4pj41"]
 
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="1_6wg58"]
 [ext_resource type="PackedScene" uid="uid://b0q2efr7idnu8" path="res://Coin.tscn" id="1_otcyi"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://bffxlqmbtvmjr" path="res://Village Tileset/2 Objects/7 House/4.png" id="51_iyvv6"]
 [ext_resource type="Texture2D" uid="uid://bre04bv3gk5ey" path="res://image (41).png" id="51_y178y"]
 [ext_resource type="Texture2D" uid="uid://dfirte7lhsxlc" path="res://One Off Assets/Paul Statue.png" id="52_0euqo"]
+[ext_resource type="AudioStream" uid="uid://d5pofmhil44" path="res://Sounds/Warmth.wav" id="54_okp2w"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="65_4sg5m"]
 [ext_resource type="Texture2D" uid="uid://bilo5448unwv1" path="res://Field Tileset/3 Animated Objects/2 Campfire/2.png" id="72_t0ueo"]
 [ext_resource type="Texture2D" uid="uid://bk5c0k21rpixs" path="res://Field Tileset/2 Objects/1 Shadow/3.png" id="73_8x6uv"]
@@ -1056,7 +1057,6 @@ position = Vector2(735, 158)
 
 [node name="Player" parent="." instance=ExtResource("1_6wg58")]
 position = Vector2(-137, -9)
-up_direction = Vector2(0.707107, 0.707107)
 
 [node name="Background" type="TileMap" parent="."]
 position = Vector2(33, 10)
@@ -1402,6 +1402,7 @@ texture = ExtResource("73_8x6uv")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Static Assets/Starting Area/Fire"]
 stream = ExtResource("20_o4vgl")
+volume_db = -20.631
 autoplay = true
 attenuation = 4.92458
 
@@ -1742,6 +1743,11 @@ texture = ExtResource("38_eih1x")
 position = Vector2(1110, 192)
 shape = SubResource("CapsuleShape2D_10cel")
 
+[node name="PaulStatue" type="Sprite2D" parent="Static Assets/Starting Area"]
+position = Vector2(1111, 193)
+scale = Vector2(0.207594, 0.185091)
+texture = ExtResource("52_0euqo")
+
 [node name="GateArea" type="Node2D" parent="Static Assets"]
 position = Vector2(620, 182)
 
@@ -1790,6 +1796,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Static Assets/GateArea/Gate"]
 stream = ExtResource("38_u2atq")
+volume_db = -28.108
 
 [node name="Walls" type="StaticBody2D" parent="Static Assets/GateArea"]
 
@@ -1874,6 +1881,11 @@ offset_bottom = 526.0
 scale = Vector2(0.171117, 0.188897)
 icon = ExtResource("51_y178y")
 
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Static Assets"]
+stream = ExtResource("54_okp2w")
+volume_db = -40.048
+autoplay = true
+
 [node name="JaviDogPath" type="Path2D" parent="."]
 position = Vector2(266, 116)
 curve = SubResource("Curve2D_cv6kk")
@@ -1925,16 +1937,11 @@ autowrap_mode = 2
 
 [node name="Woof" type="AudioStreamPlayer2D" parent="JaviDogPath/PathFollow2D/Doggy Javi"]
 stream = ExtResource("41_i1uet")
-volume_db = -5.0
+volume_db = -15.895
 autoplay = true
 max_distance = 500.0
 attenuation = 4.75683
 script = ExtResource("42_k7hy0")
-
-[node name="PaulStatue" type="Sprite2D" parent="."]
-position = Vector2(1142, 203)
-scale = Vector2(0.207594, 0.185091)
-texture = ExtResource("52_0euqo")
 
 [connection signal="new_coin" from="Coin" to="Player" method="_on_coin_new_coin"]
 [connection signal="body_entered" from="Static Assets/Starting Area/Scene2" to="Player" method="_on_scene_2_body_entered"]

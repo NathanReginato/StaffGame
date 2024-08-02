@@ -323,6 +323,7 @@ animation = &"WalkNorthWest"
 position = Vector2(-213.57, -108.388)
 scale = Vector2(0.75734, 0.853446)
 stream = ExtResource("7_8pcy3")
+volume_db = -19.676
 
 [node name="Points" type="Label" parent="AnimatedSprite2D"]
 visible = false
@@ -418,6 +419,7 @@ texture = ExtResource("11_jkptv")
 position = Vector2(-133.16, -124.566)
 scale = Vector2(1.58524, 1.8592)
 stream = ExtResource("15_kjrc1")
+volume_db = -45.262
 
 [node name="WaterBottle" type="Sprite2D" parent="Camera2D"]
 light_mask = 0

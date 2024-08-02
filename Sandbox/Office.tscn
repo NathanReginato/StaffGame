@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bil0n7w58nkos"]
+[gd_scene load_steps=36 format=3 uid="uid://bil0n7w58nkos"]
 
 [ext_resource type="Texture2D" uid="uid://cdtljdmq2x60r" path="res://One Off Assets/16x16.png" id="1_wq1qx"]
 [ext_resource type="Texture2D" uid="uid://deac834vtbre1" path="res://Field Tileset/1 Tiles/FieldsTileset.png" id="2_24c2g"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btbu267ahdpag" path="res://Field Tileset/2 Objects/5 Grass/3.png" id="4_ymtiv"]
 [ext_resource type="Texture2D" uid="uid://c01m5xiw6w5hx" path="res://One Off Assets/camp office.png" id="5_2t2oo"]
 [ext_resource type="PackedScene" uid="uid://dr3370ostip2o" path="res://Player.tscn" id="5_ckuo2"]
+[ext_resource type="AudioStream" uid="uid://0ty06qy03s8y" path="res://Sounds/Groovy booty.wav" id="6_npu3x"]
 [ext_resource type="Texture2D" uid="uid://dtsitc6cp7wur" path="res://grizzled treant/treantupscaled.png" id="7_jgl36"]
 [ext_resource type="Texture2D" uid="uid://b5mwl5nyqlwde" path="res://One Off Assets/text-space-scroll-paper-pixel-art-style_475147-2697-removebg-preview.png" id="8_eusx0"]
 [ext_resource type="Script" path="res://TreantDialog.gd" id="9_he4em"]
@@ -2072,9 +2073,13 @@ position = Vector2(162, 255)
 scale = Vector2(0.0634434, 0.0625153)
 texture = ExtResource("5_2t2oo")
 
+[node name="BackgroundMusic" type="AudioStreamPlayer2D" parent="Static Assets"]
+stream = ExtResource("6_npu3x")
+volume_db = -33.114
+autoplay = true
+
 [node name="Player" parent="." instance=ExtResource("5_ckuo2")]
 position = Vector2(-67, 91)
-up_direction = Vector2(0.707107, 0.707107)
 
 [node name="OfficeTreant" type="CharacterBody2D" parent="."]
 position = Vector2(79, 19)
